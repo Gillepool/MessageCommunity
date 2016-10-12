@@ -43,9 +43,7 @@ namespace MyCommunity.Service
 
         public IEnumerable<Message> GetUserMessages(string id)
         {
-            return null;
-            //var user = userRepository.GetById(id);
-            //return messageRepository.GetMany(m => m.ReceiverId == id).GroupBy(g => g.SenderId);
+            return messageRepository.GetMany(m => m.ReceiverId == id);
         }
 
         public void SaveMessage()

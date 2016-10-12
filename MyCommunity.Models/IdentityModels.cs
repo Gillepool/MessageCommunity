@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using MyCommunity.Models;
+using System;
 
 namespace MyCommunity.Webbapp.Models
 {
@@ -19,7 +20,15 @@ namespace MyCommunity.Webbapp.Models
             return userIdentity;
         }
 
-        
+        public int NumberOfMessages { get; set; }
+        public int NumberOfReadMessages { get; set; }
+        public int NumberOfdeletedMessages { get; set; }
+
+        //public DateTime LastLogin { get; set; }
+        public int numberOfLoginsLastMonth { get; set; }
+
+        public virtual ICollection<Message> PublishedMessages { get; set; }
+        public virtual ICollection<Message> ReceiverMessages { get; set; } 
 
     }
 }

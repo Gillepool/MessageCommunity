@@ -75,6 +75,18 @@
     <Compile Include="Migrations\201610111540501_test2.Designer.cs">
       <DependentUpon>201610111540501_test2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610120949215_test1.cs" />
+    <Compile Include="Migrations\201610120949215_test1.Designer.cs">
+      <DependentUpon>201610120949215_test1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610121607516_newIndex.cs" />
+    <Compile Include="Migrations\201610121607516_newIndex.Designer.cs">
+      <DependentUpon>201610121607516_newIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610121616331_new.cs" />
+    <Compile Include="Migrations\201610121616331_new.Designer.cs">
+      <DependentUpon>201610121616331_new.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\MessageRepository.cs" />
@@ -96,6 +108,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610111540501_test2.resx">
       <DependentUpon>201610111540501_test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610120949215_test1.resx">
+      <DependentUpon>201610120949215_test1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610121607516_newIndex.resx">
+      <DependentUpon>201610121607516_newIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610121616331_new.resx">
+      <DependentUpon>201610121616331_new.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

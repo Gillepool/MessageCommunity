@@ -32,3 +32,21 @@ C:\Users\danie_000\Dropbox\MyCommunity\MyCommunity.Service\obj\Debug\MyCommunity
 C:\Users\danie_000\Dropbox\MyCommunity\MyCommunity.Service\obj\Debug\MyCommunity.Service.pdb
 C:\Users\danie_000\Documents\Visual Studio 2015\Projects\MyCommunity\MyCommunity.Service\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\danie_000\Documents\Visual Studio 2015\Projects\MyCommunity\MyCommunity.Service\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\MyCommunity.Service.dll.config
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\MyCommunity.Service.dll
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\MyCommunity.Service.pdb
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\EntityFramework.dll
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\MyCommunity.DataLayer.dll
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\MyCommunity.Models.dll
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\MyCommunity.DataLayer.pdb
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\MyCommunity.Models.pdb
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\EntityFramework.xml
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\obj\Debug\MyCommunity.Service.csprojResolveAssemblyReference.cache
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\obj\Debug\MyCommunity.Service.dll
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\obj\Debug\MyCommunity.Service.pdb

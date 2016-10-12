@@ -9,7 +9,6 @@ namespace MyCommunity.Webbapp.ViewModels
 {
     public class MessageSendViewModel
     {
-       
         [Required]
         [DataType(DataType.Text)]
         [Display(Name = "MessageTitle")]

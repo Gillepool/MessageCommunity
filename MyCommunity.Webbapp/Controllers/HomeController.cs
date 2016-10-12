@@ -23,64 +23,33 @@ namespace MyCommunity.Webbapp.Controllers
             this.messageService = messageService;
             this.userService = userService;
         }
+
         public ActionResult Index()
         {
-            IEnumerable<MessageViewModel> messageViewModel;
-            IEnumerable<Message> messages;
-
-            messages = messageService.GetMessages();
-
-            messageViewModel = Mapper.Map<IEnumerable<Message>, IEnumerable<MessageViewModel>>(messages);
-            return View(messageViewModel);
+            UserInformationViewModel UserInfo = new UserInformationViewModel();
+            var user = userService.GetUser(User.Identity.GetUserId());
+            UserInfo.Email = user.Email;
+           // UserInfo.LastLogin = user.LastLogin;
+            UserInfo.NumberOfUnreadMessages = user.NumberOfMessages - user.NumberOfReadMessages;
+            UserInfo.NumberOfLoginsLastMonth = 0;
+            return View(UserInfo);
         }
 
-        public ActionResult About()
+
+        public ActionResult GetMessages()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            IEnumerable<MessageViewModel> MessageViewModels;
+            IEnumerable<Message> Messages;
+            var user = userService.GetUser(User.Identity.GetUserId());
+            Messages = messageService.GetUserMessages(user.Id);
+            MessageViewModels = Mapper.Map<IEnumerable<Message>, IEnumerable<MessageViewModel>>(Messages);
+            return View(MessageViewModels);
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
 
         [HttpPost]
         public ActionResult Create(MessageSendViewModel newMessage)
         {
-            /*
-            IEnumerable<string> AllReceivers = new List<string>();
-           
-            if (newMessage != null)
-            {
-                if (newMessage.SelectedUsers != null && newMessage.SelectedUsers.Any())
-                    AllReceivers = AllReceivers.Union(newMessage.SelectedUsers);
-
-                if (AllReceivers.Any()) {
-                    if (ModelState.IsValid) {
-                        Message dbMessage = new Message();
-                        var sender = userService.GetUser(User.Identity.GetUserId());
-                        dbMessage.SenderId = sender.Id;
-                        dbMessage.MessageTitle = newMessage.Title;
-                        dbMessage.MessageBody = newMessage.Content;
-                        dbMessage.IsRead = false;
-                        dbMessage.Date = DateTime.Now;
-
-                        var Receiver = (ApplicationUser)null;
-                        foreach (string userId in AllReceivers) {
-                            Receiver = userService.GetUser(userId);
-                            dbMessage.ReceiverId = Receiver.Id;
-                            messageService.CreateMessage(dbMessage);
-                            messageService.SaveMessage();
-                        }
-
-                        return RedirectToAction("Index");
-                    }
-                }
-                */
             var sender = userService.GetUser(User.Identity.GetUserId());
             Message message = Mapper.Map<MessageSendViewModel, Message>(newMessage);
             message.SenderId = sender.Id;
@@ -88,14 +57,11 @@ namespace MyCommunity.Webbapp.Controllers
             message.MessageBody = newMessage.MessageBody;
             message.IsRead = false;
             message.Date = DateTime.Now;
-
             messageService.CreateMessage(message);
-
             messageService.SaveMessage();
-
-
+            sender.NumberOfMessages++;
+            
             return RedirectToAction("Index");
-
         }
      }
 }

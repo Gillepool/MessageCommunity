@@ -33,3 +33,25 @@ C:\Users\danie_000\Dropbox\MyCommunity\MyCommunity.DataLayer\obj\Debug\MyCommuni
 C:\Users\danie_000\Documents\Visual Studio 2015\Projects\MyCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.test.resources
 C:\Users\danie_000\Documents\Visual Studio 2015\Projects\MyCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.csproj.GenerateResource.Cache
 C:\Users\danie_000\Documents\Visual Studio 2015\Projects\MyCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.test2.resources
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\bin\Debug\MyCommunity.DataLayer.dll.config
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\bin\Debug\MyCommunity.DataLayer.dll
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\bin\Debug\MyCommunity.DataLayer.pdb
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\bin\Debug\EntityFramework.dll
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\bin\Debug\MyCommunity.Models.dll
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\bin\Debug\MyCommunity.Models.pdb
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\bin\Debug\EntityFramework.xml
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.csprojResolveAssemblyReference.cache
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.test.resources
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.test2.resources
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.csproj.GenerateResource.Cache
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.dll
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.pdb
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.test1.resources
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.newIndex.resources
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations._new.resources
