@@ -1,11 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MyCommunity.DataLayer.Infrastructure;
 using MyCommunity.DataLayer.Repositories;
 using MyCommunity.Webbapp.Models;
+using System.Collections.Generic;
+
 
 namespace MyCommunity.Service
 {
@@ -27,6 +29,7 @@ namespace MyCommunity.Service
 
         public IEnumerable<ApplicationUser> GetUsers()
         {
+
             return userRepository.GetAll();
         }
 
@@ -35,12 +38,18 @@ namespace MyCommunity.Service
             unitOfWork.CommitToDatabase();
         }
 
+        public IEnumerable<ApplicationUser> GetAllUsersBut(string id)
+        {
+            return null;
+            //return userRepository.GetMany(u => u.Id != id);
+        }
     }
 
     public interface IUserService
     {
         IEnumerable<ApplicationUser> GetUsers();
         ApplicationUser GetUser(string id);
+        IEnumerable<ApplicationUser> GetAllUsersBut(string id);
         void updateUser();
     }
 }

@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace MyCommunity.Webbapp.Controllers
 {
-   
+
     public class SendMessagesController : Controller
     {
         private readonly IMessageService messageService;
@@ -32,7 +32,7 @@ namespace MyCommunity.Webbapp.Controllers
             Message message = Mapper.Map<MessageViewModel, Message>(newMessage);
             message.SenderId = sender.Id;
             message.ReceiverId = userData.Id;
-           message.IsRead = false;
+            message.IsRead = false;
             message.MessageBody = newMessage.MessageBody;
             message.MessageTitle = newMessage.MessageTitle;
             //message.Date = DateTime.Now;
@@ -48,14 +48,16 @@ namespace MyCommunity.Webbapp.Controllers
             System.Diagnostics.Debug.WriteLine("before Update User");
             userService.updateUser();
             System.Diagnostics.Debug.WriteLine("after update user");
+            Response.Write("you did it!");
             //ViewBag.MessageSuccess = "Message successfully sent";
             //return ViewBag();
+            TempData["successMessage"] = "Meddelande nummer " + sender.NumberOfMessages + " avsänt till " + sender.Email + ", ";
             return RedirectToAction("Index");
         }
 
         public ActionResult SendGroupMessage()
         {
-
+            User.Identity.GetUserId();
             return null;
         }
 
@@ -67,6 +69,7 @@ namespace MyCommunity.Webbapp.Controllers
                 Text = a.Email,
                 Value = a.Id
             });
+
             MessageSendViewModel.UserList = new SelectList(user, "Value", "Text");
             return View(MessageSendViewModel);
         }

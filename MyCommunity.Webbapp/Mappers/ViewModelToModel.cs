@@ -18,7 +18,6 @@ namespace MyCommunity.Webbapp.Mappers
         protected override void Configure()
         {
             CreateMap<MessageViewModel, Message>();
-            CreateMap<UserViewModel, ApplicationUser>();
         }
     }
 }

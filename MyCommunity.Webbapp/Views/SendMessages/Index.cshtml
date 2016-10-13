@@ -14,7 +14,7 @@
 </head>
 <body>
     @using (Html.BeginForm("SendPersonalMessage", "SendMessages", FormMethod.Post,
-                                                            new { enctype = "multipart/form-data", @class = "form-inline" }))
+                                                        new { enctype = "multipart/form-data", @class = "form-inline" }))
     {
 
         <div class="form-group">
@@ -22,15 +22,21 @@
             <input type="text" class="form-control" name="MessageTitle" placeholder="Title">
         </div>
         <div class="form-group">
+            <label class="sr-only" for="gadgetName">Message Body</label>
+            <input type="text" class="form-control" name="MessageBody" placeholder="Message">
+        </div>
+        <div class="form-group">
             @Html.DropDownListFor(m => m.Id, Model.UserList)
             @Html.ValidationMessageFor(m => m.Id)
         </div>
-        <div class="form-group">
-            <label class="sr-only" for="gadgetName">Message Body</label>
-            <input type="text" class="form-control" name="MessageBody" placeholder="MessageBody">
-        </div>
         <div>
             <button type="submit" class="btn btn-primary">Upload</button>
+        </div>
+    }
+    @{var successMessage = TempData["successMessage"]; }
+    @if(successMessage != null){
+        <div>
+            @successMessage
         </div>
     }
 
