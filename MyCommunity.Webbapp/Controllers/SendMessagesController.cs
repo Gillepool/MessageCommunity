@@ -35,7 +35,7 @@ namespace MyCommunity.Webbapp.Controllers
             message.IsRead = false;
             message.MessageBody = newMessage.MessageBody;
             message.MessageTitle = newMessage.MessageTitle;
-            //message.Date = DateTime.Now;
+            message.Date = DateTime.Now;
             System.Diagnostics.Debug.WriteLine("sender id " + message.SenderId);
             System.Diagnostics.Debug.WriteLine("receiver id" + message.ReceiverId);
             System.Diagnostics.Debug.WriteLine("message body" + message.MessageBody);
@@ -51,7 +51,7 @@ namespace MyCommunity.Webbapp.Controllers
             Response.Write("you did it!");
             //ViewBag.MessageSuccess = "Message successfully sent";
             //return ViewBag();
-            TempData["successMessage"] = "Meddelande nummer " + sender.NumberOfMessages + " avsänt till " + sender.Email + ", ";
+            TempData["successMessage"] = "Meddelande nummer " + sender.NumberOfMessages + " avsänt till " + sender.Email + ", " + message.Date;
             return RedirectToAction("Index");
         }
 

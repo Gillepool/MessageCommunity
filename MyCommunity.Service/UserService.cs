@@ -40,7 +40,7 @@ namespace MyCommunity.Service
 
         public IEnumerable<ApplicationUser> GetAllUsersBut(string id)
         {
-            return null;
+            return GetUsers();
             //return userRepository.GetMany(u => u.Id != id);
         }
     }
