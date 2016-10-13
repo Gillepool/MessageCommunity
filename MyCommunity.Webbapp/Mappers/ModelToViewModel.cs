@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MyCommunity.Models;
+using MyCommunity.Webbapp.Models;
 using MyCommunity.Webbapp.ViewModels;
 
 namespace MyCommunity.Webbapp.Mappers
@@ -14,6 +15,7 @@ namespace MyCommunity.Webbapp.Mappers
         protected override void Configure()
         {
             CreateMap<Message, MessageViewModel>();
+            CreateMap<ApplicationUser, UserViewModel>();
         }
     }
 }

@@ -38,14 +38,13 @@
     }
 
 </div>*@
-Before HEllo
     <div class="panel panel-default">
         User name
         @Html.DisplayFor(model => model.Email)
     </div>
     <div class="panel panel-default">
         Last login
-        
+         
     </div>
     <div>
         Number of unread messages
@@ -56,6 +55,7 @@ Before HEllo
         @Html.DisplayFor(model => model.NumberOfLoginsLastMonth)
     </div>
 
+<p><a class="btn btn-default" href="/SendMessages/Index">Send &raquo;</a></p>
 <div class="col-md-4">
     <h2>Get more libraries</h2>
     <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>

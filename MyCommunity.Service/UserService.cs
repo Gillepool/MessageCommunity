@@ -9,7 +9,7 @@ using MyCommunity.Webbapp.Models;
 
 namespace MyCommunity.Service
 {
-    class UserService : IUserService
+    public class UserService : IUserService
     {
         private readonly IUserRepository userRepository;
         private readonly IUnitOfWork unitOfWork;
@@ -29,11 +29,18 @@ namespace MyCommunity.Service
         {
             return userRepository.GetAll();
         }
+
+        public void updateUser()
+        {
+            unitOfWork.CommitToDatabase();
+        }
+
     }
 
     public interface IUserService
     {
         IEnumerable<ApplicationUser> GetUsers();
         ApplicationUser GetUser(string id);
+        void updateUser();
     }
 }

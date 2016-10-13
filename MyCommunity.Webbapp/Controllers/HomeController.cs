@@ -53,10 +53,8 @@ namespace MyCommunity.Webbapp.Controllers
             var sender = userService.GetUser(User.Identity.GetUserId());
             Message message = Mapper.Map<MessageSendViewModel, Message>(newMessage);
             message.SenderId = sender.Id;
-            message.MessageTitle = newMessage.MessageTitle;
-            message.MessageBody = newMessage.MessageBody;
             message.IsRead = false;
-            message.Date = DateTime.Now;
+            //message.Date = DateTime.Now;
             messageService.CreateMessage(message);
             messageService.SaveMessage();
             sender.NumberOfMessages++;

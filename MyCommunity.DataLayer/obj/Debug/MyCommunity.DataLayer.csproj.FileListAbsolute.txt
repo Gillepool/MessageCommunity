@@ -55,3 +55,4 @@ C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug
 C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.test1.resources
 C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.newIndex.resources
 C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations._new.resources
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.removeddatefrommessage.resources

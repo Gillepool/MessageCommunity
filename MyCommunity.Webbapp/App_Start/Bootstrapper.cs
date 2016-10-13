@@ -10,6 +10,7 @@ using MyCommunity.DataLayer.Infrastructure;
 using MyCommunity.DataLayer.Repositories;
 using MyCommunity.Service;
 using MyCommunity.Webbapp.Mappers;
+using MyCommunity.Webbapp.Controllers;
 
 namespace MyCommunity.Webbapp.App_Start
 {
@@ -26,7 +27,7 @@ namespace MyCommunity.Webbapp.App_Start
         private static void SetAutofacContainer()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterControllers(typeof(HomeController).Assembly);
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterType<DatabaseManager>().As<IDatabaseManager>().InstancePerRequest();
 

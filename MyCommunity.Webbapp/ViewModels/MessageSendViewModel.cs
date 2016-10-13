@@ -9,19 +9,9 @@ namespace MyCommunity.Webbapp.ViewModels
 {
     public class MessageSendViewModel
     {
-        [Required]
-        [DataType(DataType.Text)]
-        [Display(Name = "MessageTitle")]
-        public string MessageTitle { get; set; }
-
-        [Required]
-        [DataType(DataType.Text)]
-        [Display(Name = "MessageBody")]
-        public string MessageBody { get; set; }
-
-        [Display(Name = "Users")]
-        public IEnumerable<SelectListItem> Users { get; set; }
-        public IEnumerable<String> SelectedUsers { get; set; }
-
+        [Display(Name = "Email")]
+        public string UserEmail { get; set; }
+        public string Id { get; set; }
+        public IEnumerable<SelectListItem> UserList { get; set; }
     }
 }
