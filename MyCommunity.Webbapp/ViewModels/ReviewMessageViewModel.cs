@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MyCommunity.Models;
+using System.Web;
 
-namespace MyCommunity.Models
+namespace MyCommunity.Webbapp.ViewModels
 {
-    public class Message
+    public class ReviewMessageViewModel
     {
         public int MessageId { get; set; }
         public string MessageTitle { get; set; }
@@ -17,8 +14,7 @@ namespace MyCommunity.Models
         public DateTime Date { get; set; }
         public string SenderId { get; set; }
         public string ReceiverId { get; set; }
-        //Navigation properties
-        public virtual ApplicationUser Sender { get; set; }
-        public virtual ApplicationUser Receiver { get; set; }
+        public UserInformationViewModel Sender { get; set; }
+        public UserInformationViewModel Receiver { get; set; }
     }
 }

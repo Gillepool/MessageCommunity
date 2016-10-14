@@ -213,8 +213,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReviewMessagesController.cs" />
     <Compile Include="Controllers\SendMessagesController.cs" />
     <Compile Include="ViewModels\PostFeedback.cs" />
+    <Compile Include="ViewModels\ReviewMessageViewModel.cs" />
+    <Compile Include="ViewModels\ReviewUserMessagesViewModel.cs" />
     <Compile Include="ViewModels\UserInformationViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="Global.asax.cs">
@@ -267,7 +270,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -292,6 +294,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\Message.cshtml" />
     <Content Include="Views\SendMessages\Index.cshtml" />
+    <Content Include="Views\ReviewMessages\Index.cshtml" />
+    <Content Include="Views\ReviewMessages\ViewUserMessages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

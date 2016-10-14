@@ -16,6 +16,8 @@ namespace MyCommunity.Webbapp.Mappers
         {
             CreateMap<Message, MessageViewModel>();
             CreateMap<ApplicationUser, UserViewModel>();
+            CreateMap<Message, MessageViewModel>();
+            CreateMap<Message, ReviewMessageViewModel>();
         }
     }
 }

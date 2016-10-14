@@ -5,8 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using MyCommunity.Webbapp.Models;
+using MyCommunity.Models;
 using MyCommunity.DataLayer;
+using MyCommunity.Webbapp.Models;
 
 namespace MyCommunity.Webbapp
 {

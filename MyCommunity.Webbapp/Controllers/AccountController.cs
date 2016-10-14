@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using MyCommunity.Models;
 using MyCommunity.Webbapp.Models;
 
 namespace MyCommunity.Webbapp.Controllers

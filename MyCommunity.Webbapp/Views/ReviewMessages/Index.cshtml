@@ -1,0 +1,29 @@
+﻿@model MyCommunity.Webbapp.ViewModels.ReviewUserMessagesViewModel
+@using MyCommunity.Webbapp.ViewModels
+@{
+    ViewBag.Title = "UserMessages Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Users</h2>
+
+<table class="table">
+    @foreach (var item in Model.Messages)
+    {
+        using (Html.BeginForm("GoToViewUserMessages", "ReviewMessages", FormMethod.Post,
+                                                                        new { enctype = "multipart/form-data", @class = "form-inline" }))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                    <input value=@item.userId name="Id" hidden>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfMessages)
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </td>
+            </tr>
+        }
+    }
+</table>

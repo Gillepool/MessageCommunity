@@ -32,24 +32,19 @@ namespace MyCommunity.Webbapp.Controllers
             Message message = Mapper.Map<MessageViewModel, Message>(newMessage);
             message.SenderId = sender.Id;
             message.ReceiverId = userData.Id;
-           message.IsRead = false;
+            message.IsRead = false;
             message.MessageBody = newMessage.MessageBody;
             message.MessageTitle = newMessage.MessageTitle;
-            //message.Date = DateTime.Now;
-            System.Diagnostics.Debug.WriteLine("sender id " + message.SenderId);
-            System.Diagnostics.Debug.WriteLine("receiver id" + message.ReceiverId);
-            System.Diagnostics.Debug.WriteLine("message body" + message.MessageBody);
-            System.Diagnostics.Debug.WriteLine("message title" + message.MessageTitle);
+            message.Date = DateTime.Now;
             messageService.CreateMessage(message);
-            System.Diagnostics.Debug.WriteLine("after create message");
             messageService.SaveMessage();
-            System.Diagnostics.Debug.WriteLine("after save Message");
             sender.NumberOfMessages++;
-            System.Diagnostics.Debug.WriteLine("before Update User");
             userService.updateUser();
-            System.Diagnostics.Debug.WriteLine("after update user");
-            //ViewBag.MessageSuccess = "Message successfully sent";
-            //return ViewBag();
+            TempData["successMessage"] = "Meddelande nummer " 
+                + sender.NumberOfMessages 
+                + " avsänt till " 
+                + sender.Email + ", " 
+                + message.Date;
             return RedirectToAction("Index");
         }
 
@@ -62,11 +57,13 @@ namespace MyCommunity.Webbapp.Controllers
         public ActionResult Index()
         {
             MessageSendViewModel MessageSendViewModel = new MessageSendViewModel();
-            var user = userService.GetUsers().Select(a => new SelectListItem
+            var sender = userService.GetUser(User.Identity.GetUserId());
+            var user = userService.GetAllUsersBut(sender.Id).Select(a => new SelectListItem
             {
                 Text = a.Email,
                 Value = a.Id
             });
+
             MessageSendViewModel.UserList = new SelectList(user, "Value", "Text");
             return View(MessageSendViewModel);
         }

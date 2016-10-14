@@ -25,7 +25,7 @@ namespace MyCommunity.DataLayer
                     MessageTitle = "Title1",
                     MessageBody = "Body1",
                     IsRead=false,
-                    //Date = DateTime.Parse("2014-01-01"),
+                    Date = DateTime.Parse("2014-01-01"),
                     SenderId="1",
                     ReceiverId="2",
                 },
@@ -34,7 +34,7 @@ namespace MyCommunity.DataLayer
                     MessageTitle = "Title2",
                     MessageBody = "Body2",
                     IsRead=true,
-                    //Date = DateTime.Parse("2014-04-01"),
+                    Date = DateTime.Parse("2014-04-01"),
                     SenderId="1",
                     ReceiverId="2",
 
@@ -44,7 +44,7 @@ namespace MyCommunity.DataLayer
                     MessageTitle = "Title3",
                     MessageBody = "Body3",
                     IsRead=true,
-                    //Date = DateTime.Parse("2014-04-02"),
+                    Date = DateTime.Parse("2014-04-02"),
                     SenderId="2",
                     ReceiverId="1",
 

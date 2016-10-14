@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.EntityFramework;
 using MyCommunity.DataLayer.Configurations;
 using MyCommunity.Models;
-using MyCommunity.Webbapp.Models;
 
 namespace MyCommunity.DataLayer
 {

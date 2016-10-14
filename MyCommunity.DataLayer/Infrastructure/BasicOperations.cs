@@ -14,6 +14,7 @@ namespace MyCommunity.DataLayer.Infrastructure
         private readonly IDbSet<T> dbSet;
         protected IDatabaseManager DbManager{ get; private set; }
         public DatabaseContext databaseContext { get { return dbContext ?? (dbContext = DbManager.Init()); } }
+
         protected BasicOperations(IDatabaseManager DbManager)
         {
             this.DbManager = DbManager;
@@ -57,5 +58,7 @@ namespace MyCommunity.DataLayer.Infrastructure
         {
             return dbSet.Where(predicate).FirstOrDefault<T>();
         }
+
+       
     }
 }
