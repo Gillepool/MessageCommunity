@@ -46,6 +46,11 @@ namespace MyCommunity.Service
             return messageRepository.GetMany(m => m.ReceiverId == id);
         }
 
+        public IEnumerable<Message> GetUserMessagesIncludingSenderInfo(string id)
+        {
+            return messageRepository.GetUserMessagesIncludingSenderInfo(id);
+        }
+
         public void SaveMessage()
         {
             unitOfWork.CommitToDatabase();
@@ -55,6 +60,11 @@ namespace MyCommunity.Service
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<Message> GetUserMessagesToFrom(string receiver, string sender)
+        {
+            return messageRepository.GetMany(m => (m.ReceiverId == receiver) && (m.SenderId == sender));
+        }
     }
 
     public interface IMessageService
@@ -62,8 +72,10 @@ namespace MyCommunity.Service
         IEnumerable<Message> GetMessages();
         IEnumerable<Message> GetUserMessages(string id);
         Message GetMessage(string id);
+        IEnumerable<Message> GetUserMessagesIncludingSenderInfo(string id);
         void CreateMessage(Message message);
         void DeleteMessage(int id);
         void SaveMessage();
+        IEnumerable<Message> GetUserMessagesToFrom(string v, string id);
     }
 }

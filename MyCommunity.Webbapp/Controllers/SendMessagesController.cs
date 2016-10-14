@@ -48,7 +48,6 @@ namespace MyCommunity.Webbapp.Controllers
             System.Diagnostics.Debug.WriteLine("before Update User");
             userService.updateUser();
             System.Diagnostics.Debug.WriteLine("after update user");
-            Response.Write("you did it!");
             //ViewBag.MessageSuccess = "Message successfully sent";
             //return ViewBag();
             TempData["successMessage"] = "Meddelande nummer " + sender.NumberOfMessages + " avsänt till " + sender.Email + ", " + message.Date;

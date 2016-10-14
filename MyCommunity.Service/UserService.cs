@@ -43,6 +43,11 @@ namespace MyCommunity.Service
             return GetUsers();
             //return userRepository.GetMany(u => u.Id != id);
         }
+
+        public IEnumerable<ApplicationUser> GetAllUsersThatSentMessagesToThisUser(ApplicationUser user)
+        {
+            return userRepository.GetAllUsersThatSentMessagesToThisUser(user);
+        }
     }
 
     public interface IUserService
@@ -50,6 +55,7 @@ namespace MyCommunity.Service
         IEnumerable<ApplicationUser> GetUsers();
         ApplicationUser GetUser(string id);
         IEnumerable<ApplicationUser> GetAllUsersBut(string id);
+        IEnumerable<ApplicationUser> GetAllUsersThatSentMessagesToThisUser(ApplicationUser user);
         void updateUser();
     }
 }

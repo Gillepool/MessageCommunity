@@ -7,5 +7,14 @@ namespace MyCommunity.Webbapp.ViewModels
 {
     public class ReviewMessageViewModel
     {
+        public int MessageId { get; set; }
+        public string MessageTitle { get; set; }
+        public string MessageBody { get; set; }
+        public Boolean IsRead { get; set; }
+        public DateTime Date { get; set; }
+        public string SenderId { get; set; }
+        public string ReceiverId { get; set; }
+        public UserInformationViewModel Sender { get; set; }
+        public UserInformationViewModel Receiver { get; set; }
     }
 }
