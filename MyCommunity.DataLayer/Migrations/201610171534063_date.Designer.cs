@@ -7,13 +7,13 @@ namespace MyCommunity.DataLayer.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddedDatebacktodatabase : IMigrationMetadata
+    public sealed partial class date : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedDatebacktodatabase));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(date));
         
         string IMigrationMetadata.Id
         {
-            get { return "201610141818447_Added Date back to database"; }
+            get { return "201610171534063_date"; }
         }
         
         string IMigrationMetadata.Source

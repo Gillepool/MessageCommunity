@@ -29,13 +29,17 @@ namespace MyCommunity.Service
 
         public IEnumerable<ApplicationUser> GetUsers()
         {
-           
             return userRepository.GetAll();
         }
 
-        public void updateUser()
+        public void updateUserDatabase()
         {
             unitOfWork.CommitToDatabase();
+        }
+
+        public void UpdateUser(ApplicationUser user)
+        {
+            userRepository.Update(user);
         }
 
         public IEnumerable<ApplicationUser> GetAllUsersBut(string id)
@@ -49,6 +53,7 @@ namespace MyCommunity.Service
         IEnumerable<ApplicationUser> GetUsers();
         ApplicationUser GetUser(string id);
         IEnumerable<ApplicationUser> GetAllUsersBut(string id);
-        void updateUser();
+        void updateUserDatabase();
+        void UpdateUser(ApplicationUser user);
     }
 }

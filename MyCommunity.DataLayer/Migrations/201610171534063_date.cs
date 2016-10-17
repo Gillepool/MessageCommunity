@@ -3,16 +3,16 @@ namespace MyCommunity.DataLayer.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddedDatebacktodatabase : DbMigration
+    public partial class date : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.Messages", "Date", c => c.DateTime(nullable: false));
+            AddColumn("dbo.AspNetUsers", "LastLogin", c => c.DateTime(nullable: false));
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Messages", "Date");
+            DropColumn("dbo.AspNetUsers", "LastLogin");
         }
     }
 }

@@ -39,7 +39,6 @@ C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\E
 C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\MyCommunity.DataLayer.dll
 C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\MyCommunity.Models.dll
-C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\MyCommunity.DataLayer.pdb
 C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.Service\bin\Debug\MyCommunity.Models.pdb

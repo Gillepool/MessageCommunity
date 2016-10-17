@@ -11,6 +11,7 @@ using MyCommunity.Webbapp.ViewModels;
 
 namespace MyCommunity.Webbapp.Controllers
 {
+    [Authorize]
     public class ReviewMessagesController : Controller
     {
 
@@ -26,48 +27,6 @@ namespace MyCommunity.Webbapp.Controllers
         // GET: ReviewMessages
         public ActionResult Index()
         {
-            //MessageSendViewModel MessageSendViewModel = new MessageSendViewModel();
-            //var user = userService.GetAllUsersThatSentMessagesToThisUser(userService.GetUser(User.Identity.GetUserId())).Select(a => new SelectListItem
-            //{
-            //    Text = a.Email,
-            //    Value = a.Id
-            //});
-
-            //MessageSendViewModel.UserList = new SelectList(user, "Value", "Text");
-            //return View(MessageSendViewModel);
-            //IEnumerable<Message> messages = messageService.GetUserMessagesIncludingSenderInfo(User.Identity.GetUserId());
-            //foreach (var message in messages)
-            //{
-            //    System.Diagnostics.Debug.WriteLine("message id" + message.MessageId);
-            //    System.Diagnostics.Debug.WriteLine("message sender id" + message.SenderId);
-            //    System.Diagnostics.Debug.WriteLine("message title" + message.MessageTitle);
-            //    System.Diagnostics.Debug.WriteLine("message sender id" + message.Sender.Id);
-            //    System.Diagnostics.Debug.WriteLine("message Email " + message.Sender.Email);
-            //}
-            //IEnumerable<ReviewMessageViewModel> messageViews = Mapper.Map<IEnumerable<Message>, IEnumerable<ReviewMessageViewModel>>(messages);
-
-            //return View(messageViews);
-
-            //IList<ReviewMessageViewModel> messageViews = new List<ReviewMessageViewModel>();
-            //IEnumerable<Message> userMessages = messageService.GetUserMessagesIncludingSenderInfo(User.Identity.GetUserId());
-            //foreach(Message message in userMessages)
-            //{
-            //    ReviewMessageViewModel messageView = new ReviewMessageViewModel();
-            //    UserInformationViewModel sender = new UserInformationViewModel();
-            //    messageView.Date = message.Date;
-            //    messageView.IsRead = message.IsRead;
-            //    messageView.MessageBody = message.MessageBody;
-            //    messageView.MessageTitle = message.MessageTitle;
-            //    messageView.ReceiverId = message.ReceiverId;
-            //    messageView.SenderId = message.SenderId;
-            //    sender.Email = message.Sender.Email;
-            //    sender.NumberOfLoginsLastMonth = message.Sender.numberOfLoginsLastMonth;
-            //    sender.NumberOfUnreadMessages = message.Sender.NumberOfMessages - message.Sender.NumberOfReadMessages;
-            //    messageView.Sender = sender;
-
-            //    messageViews.Add(messageView);
-            //}
-
             var user = userService.GetUser(User.Identity.GetUserId());
 
             ReviewUserMessagesViewModel model = new ReviewUserMessagesViewModel();

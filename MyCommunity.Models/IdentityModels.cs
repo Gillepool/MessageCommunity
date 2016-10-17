@@ -24,7 +24,7 @@ namespace MyCommunity.Models
         public int NumberOfReadMessages { get; set; }
         public int NumberOfdeletedMessages { get; set; }
 
-        //public DateTime LastLogin { get; set; }
+        public DateTime LastLogin { get; set; }
         public int numberOfLoginsLastMonth { get; set; }
 
         public virtual ICollection<Message> PublishedMessages { get; set; }

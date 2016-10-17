@@ -29,9 +29,16 @@ namespace MyCommunity.Webbapp.Controllers
             UserInformationViewModel UserInfo = new UserInformationViewModel();
             var user = userService.GetUser(User.Identity.GetUserId());
             UserInfo.Email = user.Email;
-           // UserInfo.LastLogin = user.LastLogin;
+            UserInfo.LastLogin = user.LastLogin;
             UserInfo.NumberOfUnreadMessages = user.NumberOfMessages - user.NumberOfReadMessages;
-            UserInfo.NumberOfLoginsLastMonth = 0;
+            UserInfo.NumberOfLoginsLastMonth = user.numberOfLoginsLastMonth;
+            //update logins last month, update last login
+            //UserInfo = Mapper.Map<ApplicationUser, UserInformationViewModel>(user);
+            user.LastLogin = DateTime.Now;
+            System.Diagnostics.Debug.WriteLine("last user login time: " + user.LastLogin);
+            userService.UpdateUser(user);
+            userService.updateUserDatabase();
+
             return View(UserInfo);
         }
 
@@ -54,7 +61,7 @@ namespace MyCommunity.Webbapp.Controllers
             Message message = Mapper.Map<MessageSendViewModel, Message>(newMessage);
             message.SenderId = sender.Id;
             message.IsRead = false;
-            //message.Date = DateTime.Now;
+            message.Date = DateTime.Now;
             messageService.CreateMessage(message);
             messageService.SaveMessage();
             sender.NumberOfMessages++;

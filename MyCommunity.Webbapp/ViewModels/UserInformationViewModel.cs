@@ -12,7 +12,7 @@ namespace MyCommunity.Webbapp.ViewModels
         public string Email { get; set; }
         [Display(Name = "NumerOfUnreadMessages")]
         public int NumberOfUnreadMessages { get; set; }
-        //public DateTime LastLogin { get; set; }
+        public DateTime LastLogin { get; set; }
         [Display (Name = "NumberOfLoginsLastMonth")]
         public int NumberOfLoginsLastMonth { get; set; }
     }

@@ -91,9 +91,9 @@
     <Compile Include="Migrations\201610131548422_removed date from message.Designer.cs">
       <DependentUpon>201610131548422_removed date from message.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201610141818447_Added Date back to database.cs" />
-    <Compile Include="Migrations\201610141818447_Added Date back to database.Designer.cs">
-      <DependentUpon>201610141818447_Added Date back to database.cs</DependentUpon>
+    <Compile Include="Migrations\201610171534063_date.cs" />
+    <Compile Include="Migrations\201610171534063_date.Designer.cs">
+      <DependentUpon>201610171534063_date.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -129,8 +129,8 @@
     <EmbeddedResource Include="Migrations\201610131548422_removed date from message.resx">
       <DependentUpon>201610131548422_removed date from message.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610141818447_Added Date back to database.resx">
-      <DependentUpon>201610141818447_Added Date back to database.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610171534063_date.resx">
+      <DependentUpon>201610171534063_date.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

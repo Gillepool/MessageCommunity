@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyCommunity.Webbapp.Models
@@ -60,6 +61,11 @@ namespace MyCommunity.Webbapp.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+        public int NumberOfMessages { get; set; }
+        public int NumberOfReadMessages { get; set; }
+        public int NumberOfdeletedMessages { get; set; }
+        public DateTime LastLogin { get; set; }
+        public int numberOfLoginsLastMonth { get; set; }
     }
 
     public class RegisterViewModel

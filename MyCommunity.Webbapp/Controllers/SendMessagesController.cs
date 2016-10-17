@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace MyCommunity.Webbapp.Controllers
 {
-   
+    [Authorize]
     public class SendMessagesController : Controller
     {
         private readonly IMessageService messageService;
@@ -39,7 +39,7 @@ namespace MyCommunity.Webbapp.Controllers
             messageService.CreateMessage(message);
             messageService.SaveMessage();
             sender.NumberOfMessages++;
-            userService.updateUser();
+            userService.updateUserDatabase();
             TempData["successMessage"] = "Meddelande nummer " 
                 + sender.NumberOfMessages 
                 + " avsänt till " 
