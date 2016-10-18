@@ -28,9 +28,9 @@ namespace MyCommunity.Webbapp.Controllers
         [HttpPost]
         public ActionResult SendPersonalMessage(MessageViewModel newMessage, MessageSendViewModel userData)
         {
-            var sender = userService.GetUser(User.Identity.GetUserId());
+            var receiver = userService.GetUser(userData.Id);
             Message message = Mapper.Map<MessageViewModel, Message>(newMessage);
-            message.SenderId = sender.Id;
+            message.SenderId = User.Identity.GetUserId();
             message.ReceiverId = userData.Id;
             message.IsRead = false;
             message.MessageBody = newMessage.MessageBody;
@@ -38,12 +38,12 @@ namespace MyCommunity.Webbapp.Controllers
             message.Date = DateTime.Now;
             messageService.CreateMessage(message);
             messageService.SaveMessage();
-            sender.NumberOfMessages++;
+            receiver.NumberOfMessages++;
             userService.updateUserDatabase();
             TempData["successMessage"] = "Meddelande nummer " 
-                + sender.NumberOfMessages 
+                + message.MessageId 
                 + " avsänt till " 
-                + sender.Email + ", " 
+                + receiver.Email + ", " 
                 + message.Date;
             return RedirectToAction("Index");
         }

@@ -138,7 +138,7 @@ namespace MyCommunity.Webbapp.Controllers
             {
                 TempData["fail"] = "user does not own the message";
             }
-            return RedirectToAction("ViewUserMessages", new { Id = user.Id });
+            return RedirectToAction("ViewUserMessages", new { Id = MessageId });
         }
     }
 }

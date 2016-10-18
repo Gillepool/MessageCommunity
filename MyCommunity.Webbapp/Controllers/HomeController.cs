@@ -35,7 +35,7 @@ namespace MyCommunity.Webbapp.Controllers
             //update logins last month, update last login
             //UserInfo = Mapper.Map<ApplicationUser, UserInformationViewModel>(user);
             user.LastLogin = DateTime.Now;
-            System.Diagnostics.Debug.WriteLine("last user login time: " + user.LastLogin);
+            //System.Diagnostics.Debug.WriteLine("last user login time: " + user.LastLogin);
             userService.UpdateUser(user);
             userService.updateUserDatabase();
 

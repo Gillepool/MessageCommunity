@@ -14,7 +14,6 @@
         function loadMessage(messageBody, id, read) {
             document.getElementById('delete').value = id;
             document.getElementById('showMessageResult').innerHTML = messageBody;
-            //var theUrl = @Url.Action("messageRead", "ReviewMessages");
             if (!read) {
                 $.ajax({
                     type: "POST",
@@ -35,7 +34,6 @@
             @message.MessageTitle
             @message.Date
             <button onclick="loadMessage('@message.MessageBody', '@message.MessageId', '@message.IsRead');">The time is?</button>
-
         </div>
     }
     <div>Message:</div>
