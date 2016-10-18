@@ -14,8 +14,16 @@
         function loadMessage(messageBody, id, read) {
             document.getElementById('delete').value = id;
             document.getElementById('showMessageResult').innerHTML = messageBody;
+            //var theUrl = @Url.Action("messageRead", "ReviewMessages");
             if (!read) {
-                
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("messageRead", "ReviewMessages")',
+                    data: { Id: id },
+                    //success: function () {
+                    //    alert('Success');
+                    //}
+                });
             }
         }
     </script>
@@ -26,23 +34,23 @@
         <div>
             @message.MessageTitle
             @message.Date
+            <button onclick="loadMessage('@message.MessageBody', '@message.MessageId', '@message.IsRead');">The time is?</button>
 
-
-
-                <button onclick="loadMessage('@message.MessageBody', '@message.MessageId', '@message.IsRead');">The time is?</button>
- 
         </div>
     }
     <div>Message:</div>
     <p id="showMessageResult">
     </p>
     @using (Html.BeginForm("Delete", "ReviewMessages", FormMethod.Post,
-            new { enctype = "multipart/form-data", @class = "form-inline" }))
+                            new { enctype = "multipart/form-data", @class = "form-inline" }))
     {
         <button id="delete" name="MessageId">
             Delete message
         </button>
     }
+    <div id="Result">
+
+    </div>
 
 </body>
 
