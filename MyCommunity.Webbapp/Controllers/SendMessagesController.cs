@@ -35,7 +35,7 @@ namespace MyCommunity.Webbapp.Controllers
             message.IsRead = false;
             message.MessageBody = newMessage.MessageBody;
             message.MessageTitle = newMessage.MessageTitle;
-            message.Date = DateTime.Now;
+            message.Dates = DateTime.Now;
             messageService.CreateMessage(message);
             messageService.SaveMessage();
             receiver.NumberOfMessages++;
@@ -44,7 +44,7 @@ namespace MyCommunity.Webbapp.Controllers
                 + message.MessageId 
                 + " avsänt till " 
                 + receiver.Email + ", " 
-                + message.Date;
+                + message.Dates;
             return RedirectToAction("Index");
         }
 

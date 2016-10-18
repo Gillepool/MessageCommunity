@@ -105,6 +105,10 @@
     <Compile Include="Migrations\201610181720058_Add Date back to message please.Designer.cs">
       <DependentUpon>201610181720058_Add Date back to message please.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610181900474_dates.cs" />
+    <Compile Include="Migrations\201610181900474_dates.Designer.cs">
+      <DependentUpon>201610181900474_dates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\MessageRepository.cs" />
@@ -148,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610181720058_Add Date back to message please.resx">
       <DependentUpon>201610181720058_Add Date back to message please.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610181900474_dates.resx">
+      <DependentUpon>201610181900474_dates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

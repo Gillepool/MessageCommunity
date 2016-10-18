@@ -15,5 +15,7 @@ namespace MyCommunity.Webbapp.ViewModels
         public DateTime LastLogin { get; set; }
         [Display (Name = "NumberOfLoginsLastMonth")]
         public int NumberOfLoginsLastMonth { get; set; }
+        [Display(Name = "NumerOfDeletedMessages")]
+        public int NumberOfDeletedMessages { get; set; }
     }
 }

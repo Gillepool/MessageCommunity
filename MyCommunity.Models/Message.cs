@@ -14,7 +14,7 @@ namespace MyCommunity.Models
         public string MessageTitle { get; set; }
         public string MessageBody { get; set; }
         public Boolean IsRead { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime Dates { get; set; }
         public string SenderId { get; set; }
         public string ReceiverId { get; set; }
         //Navigation properties

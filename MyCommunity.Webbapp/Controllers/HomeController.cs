@@ -34,7 +34,7 @@ namespace MyCommunity.Webbapp.Controllers
             
             UserInfo.Email = user.Email;
             UserInfo.LastLogin = user.LastLogin;
-            UserInfo.NumberOfUnreadMessages = user.NumberOfMessages - user.NumberOfReadMessages;
+            UserInfo.NumberOfUnreadMessages = user.NumberOfMessages - (user.NumberOfReadMessages - user.NumberOfdeletedMessages);
             
             var Logins = userLoginService.GetUserLogins(user.Id);
             UserInfo.NumberOfLoginsLastMonth = Logins.Count(l => l.TimeOfLogin > DateTime.Now.AddDays(-30));
@@ -68,7 +68,7 @@ namespace MyCommunity.Webbapp.Controllers
             Message message = Mapper.Map<MessageSendViewModel, Message>(newMessage);
             message.SenderId = sender.Id;
             message.IsRead = false;
-            message.Date = DateTime.Now;
+            message.Dates = DateTime.Now;
             messageService.CreateMessage(message);
             messageService.SaveMessage();
             sender.NumberOfMessages++;
