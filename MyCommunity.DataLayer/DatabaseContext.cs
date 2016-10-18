@@ -21,6 +21,7 @@ namespace MyCommunity.DataLayer
         }
 
         public DbSet<Message> Messages { get; set; }
+        public DbSet<UserLogin> UserLogins { get; set; }
            
 
         public static DatabaseContext Create()
@@ -36,6 +37,7 @@ namespace MyCommunity.DataLayer
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Configurations.Add(new LoginConfiguration());
             modelBuilder.Configurations.Add(new MessageConfiguration());
         }
     }

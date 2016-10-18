@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\LoginConfiguration.cs" />
     <Compile Include="Configurations\MessageConfiguration.cs" />
     <Compile Include="DatabaseContext.cs" />
     <Compile Include="Infrastructure\BasicOperations.cs" />
@@ -95,6 +96,10 @@
     <Compile Include="Migrations\201610131950181_date added.Designer.cs">
       <DependentUpon>201610131950181_date added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610181325339_Added UserLogin Table.cs" />
+    <Compile Include="Migrations\201610181325339_Added UserLogin Table.Designer.cs">
+      <DependentUpon>201610181325339_Added UserLogin Table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\MessageRepository.cs" />
@@ -131,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610131950181_date added.resx">
       <DependentUpon>201610131950181_date added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610181325339_Added UserLogin Table.resx">
+      <DependentUpon>201610181325339_Added UserLogin Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

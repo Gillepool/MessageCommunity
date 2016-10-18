@@ -27,7 +27,10 @@ namespace MyCommunity.Webbapp.Controllers
         public ActionResult Index()
         {
             UserInformationViewModel UserInfo = new UserInformationViewModel();
+            UserLogin NewLogin = new UserLogin();
             var user = userService.GetUser(User.Identity.GetUserId());
+            NewLogin.LoggedInUser = user;
+            NewLogin.TimeOfLogin = DateTime.Now;
             UserInfo.Email = user.Email;
             // UserInfo.LastLogin = user.LastLogin;
             UserInfo.NumberOfUnreadMessages = user.NumberOfMessages - user.NumberOfReadMessages;

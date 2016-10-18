@@ -63,7 +63,7 @@ namespace MyCommunity.Webbapp.Controllers
         public ActionResult Index()
         {
             MessageSendViewModel MessageSendViewModel = new MessageSendViewModel();
-            var user = userService.GetUsers().Select(a => new SelectListItem
+            var user = userService.GetAllUsersBut(User.Identity.GetUserId()).Select(a => new SelectListItem
             {
                 Text = a.Email,
                 Value = a.Id
