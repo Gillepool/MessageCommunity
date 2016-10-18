@@ -64,6 +64,7 @@
     <Compile Include="Infrastructure\Disposable.cs" />
     <Compile Include="Infrastructure\GenericInterfaceRepository.cs" />
     <Compile Include="Infrastructure\IDatabaseManager.cs" />
+    <Compile Include="Infrastructure\IMessage.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="MessageSeedData.cs" />

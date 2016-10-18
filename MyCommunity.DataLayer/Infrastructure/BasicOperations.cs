@@ -49,6 +49,11 @@ namespace MyCommunity.DataLayer.Infrastructure
             return dbSet.Find(name);
         }
 
+        public virtual T GetById(int id)
+        {
+            return dbSet.Find(id);
+        }
+
         public IEnumerable<T> GetMany(Expression<Func<T, bool>> predicate)
         {
             return dbSet.Where(predicate).ToList();

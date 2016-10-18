@@ -8,10 +8,20 @@ using MyCommunity.Models;
 
 namespace MyCommunity.DataLayer.Repositories
 {
-    public class MessageRepository : BasicOperations<Message>, IMessageRepository
+    public class MessageRepository : BasicOperations<Message>, IMessageRepository, IMessage<Message>
     {
         public MessageRepository(IDatabaseManager DbManager) : base(DbManager)
         {
+        }
+
+        public Message GetByIntId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Message GetMessageByInt(int id)
+        {
+            return this.databaseContext.Messages.Where(m => m.MessageId == id).FirstOrDefault();
         }
 
         public IEnumerable<Message> GetUserMessagesIncludingSenderInfo(string id)
@@ -40,5 +50,6 @@ namespace MyCommunity.DataLayer.Repositories
     public interface IMessageRepository : GenericInterfaceRepository<Message>
     {
         IEnumerable<Message> GetUserMessagesIncludingSenderInfo(string id);
+        Message GetMessageByInt(int id);
     }
 }

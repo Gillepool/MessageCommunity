@@ -46,7 +46,7 @@ namespace MyCommunity.Webbapp.Controllers
             return View(model);
         }
 
-
+        [HttpGet]
         public ActionResult ViewUserMessages(string id)
         {
             System.Diagnostics.Debug.WriteLine("id:" + id);
@@ -55,7 +55,27 @@ namespace MyCommunity.Webbapp.Controllers
             messageViews = Mapper.Map<IEnumerable<Message>, IEnumerable<MessageViewModel>>(messages);
             return View(messageViews);
         }
+        [HttpPost]
+        public ActionResult messageRead(int? id)
+        {
+            var user = userService.GetUser(User.Identity.GetUserId());
+            if (id == null)
+            {
+                return RedirectToAction("ViewUserMessages", new { Id = user.Id });
+            }
+            Message message = messageService.GetMessage(id.Value);
+            if (!message.IsRead)
+            {
+                user.NumberOfReadMessages++;
+                message.IsRead = true;
+                messageService.SaveMessage();
+                userService.updateUserDatabase();
+            }
 
+            return ViewBag;
+        }
+
+        //TODO null check
         [HttpPost]
         public ActionResult GoToViewUserMessages(string Id)
         {
@@ -81,26 +101,36 @@ namespace MyCommunity.Webbapp.Controllers
             return View();
         }
 
-        // GET: ReviewMessages/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
+        //todo error message if fail
         // POST: ReviewMessages/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int MessageId)
         {
-            try
+            var user = userService.GetUser(User.Identity.GetUserId());
+            System.Diagnostics.Debug.WriteLine("message id" + MessageId);
+            Message message = messageService.GetMessage(MessageId);
+            if (message.ReceiverId == user.Id)
             {
-                // TODO: Add delete logic here
+                try
+                {
+                    messageService.DeleteMessage(message);
+                    user.NumberOfdeletedMessages++;
+                    messageService.SaveMessage();
+                    userService.updateUserDatabase();
+                }
+                catch
+                {
+                    TempData["fail"] = "Failed to remove message";
+                }
+            }
+            else
+            {
+                TempData["fail"] = "user does not own the message";
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("ViewUserMessages", new { Id = user.Id });
+
         }
+
     }
 }

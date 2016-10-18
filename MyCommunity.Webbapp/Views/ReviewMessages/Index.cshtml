@@ -21,9 +21,21 @@
                     @Html.DisplayFor(modelItem => item.NumberOfMessages)
                 </td>
                 <td>
-                    <button type="submit" class="btn btn-primary">Upload</button>
+                    <button type="submit" class="btn btn-primary">View messages</button>
                 </td>
             </tr>
         }
     }
+    <tr>
+        <td>
+            <p>Total number of messages: @Html.DisplayFor(model => model.TotalMessages)</p>
+        </td>
+        <td>
+            <p>Number of deleted messages : @Html.DisplayFor(model => model.DeletedMessages)</p>
+        </td>
+        <td>
+            <p>Number of read messages : @Html.DisplayFor(model => model.ReadMessages)</p>
+        </td>
+    </tr>
+
 </table>

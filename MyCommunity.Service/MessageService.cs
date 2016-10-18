@@ -31,9 +31,9 @@ namespace MyCommunity.Service
             messageRepository.Remove(message);
         }
 
-        public Message GetMessage(string id)
+        public Message GetMessage(int id)
         {
-            return messageRepository.GetById(id);
+            return messageRepository.GetMessageByInt(id);
         }
 
         public IEnumerable<Message> GetMessages()
@@ -57,11 +57,6 @@ namespace MyCommunity.Service
             unitOfWork.CommitToDatabase();
         }
 
-        public void DeleteMessage(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<Message> GetUserMessagesToFrom(string receiver, string sender)
         {
             return messageRepository.GetMany(m => (m.ReceiverId == receiver) && (m.SenderId == sender));
@@ -72,10 +67,10 @@ namespace MyCommunity.Service
     {
         IEnumerable<Message> GetMessages();
         IEnumerable<Message> GetUserMessages(string id);
-        Message GetMessage(string id);
+        Message GetMessage(int id);
         IEnumerable<Message> GetUserMessagesIncludingSenderInfo(string id);
         void CreateMessage(Message message);
-        void DeleteMessage(int id);
+        void DeleteMessage(Message message);
         void SaveMessage();
         IEnumerable<Message> GetUserMessagesToFrom(string v, string id);
     }
