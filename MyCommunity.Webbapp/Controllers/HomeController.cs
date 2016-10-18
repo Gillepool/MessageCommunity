@@ -17,21 +17,27 @@ namespace MyCommunity.Webbapp.Controllers
     {
         private readonly IMessageService messageService;
         private readonly IUserService userService;
+        private readonly IUserLoginService userLoginService;
 
-        public HomeController(IMessageService messageService, IUserService userService)
+        public HomeController(IMessageService messageService, IUserService userService, IUserLoginService userLoginService)
         {
             this.messageService = messageService;
             this.userService = userService;
+            this.userLoginService = userLoginService;
         }
 
         public ActionResult Index()
         {
             UserInformationViewModel UserInfo = new UserInformationViewModel();
             var user = userService.GetUser(User.Identity.GetUserId());
+            
+            
             UserInfo.Email = user.Email;
             UserInfo.LastLogin = user.LastLogin;
             UserInfo.NumberOfUnreadMessages = user.NumberOfMessages - user.NumberOfReadMessages;
-            UserInfo.NumberOfLoginsLastMonth = user.numberOfLoginsLastMonth;
+            
+            var Logins = userLoginService.GetUserLogins(user.Id);
+            UserInfo.NumberOfLoginsLastMonth = Logins.Count(l => l.TimeOfLogin > DateTime.Now.AddDays(-30));
             //update logins last month, update last login
             //UserInfo = Mapper.Map<ApplicationUser, UserInformationViewModel>(user);
             user.LastLogin = DateTime.Now;
@@ -39,6 +45,7 @@ namespace MyCommunity.Webbapp.Controllers
             userService.UpdateUser(user);
             userService.updateUserDatabase();
 
+            userLoginService.SaveUserLogin();
             return View(UserInfo);
         }
 

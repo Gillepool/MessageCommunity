@@ -28,7 +28,9 @@ namespace MyCommunity.Models
         public int numberOfLoginsLastMonth { get; set; }
 
         public virtual ICollection<Message> PublishedMessages { get; set; }
-        public virtual ICollection<Message> ReceiverMessages { get; set; } 
+        public virtual ICollection<Message> ReceiverMessages { get; set; }
+        public virtual ICollection<UserLogin> UserLogins { get; set; } 
+
 
     }
 }

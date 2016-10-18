@@ -16,6 +16,7 @@ namespace MyCommunity.DataLayer.Configurations
             HasKey(m => m.MessageId);
             Property(m => m.MessageBody).IsRequired().HasMaxLength(255);
             Property(m => m.MessageTitle).IsRequired().HasMaxLength(50);
+            Property(m => m.Date).IsRequired();
         }
     }
 }

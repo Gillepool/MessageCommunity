@@ -7,6 +7,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using MyCommunity.DataLayer;
 using MyCommunity.Webbapp.App_Start;
+using System.Data.Entity;
 
 namespace MyCommunity.Webbapp
 {
@@ -17,6 +18,7 @@ namespace MyCommunity.Webbapp
 
             // Init database
             System.Data.Entity.Database.SetInitializer(new MessageSeedData());
+
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

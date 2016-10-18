@@ -37,7 +37,17 @@ namespace MyCommunity.Webbapp.Controllers
             message.MessageTitle = newMessage.MessageTitle;
             message.Date = DateTime.Now;
             messageService.CreateMessage(message);
+            System.Diagnostics.Debug.WriteLine("Sender ID" + message.SenderId);
+
+            System.Diagnostics.Debug.WriteLine("Receiver ID" + message.ReceiverId);
+
+            System.Diagnostics.Debug.WriteLine("IsRead" + message.IsRead);
+
+            System.Diagnostics.Debug.WriteLine("MessageBody" + message.MessageBody); 
+            System.Diagnostics.Debug.WriteLine("MessageTitle" + message.MessageTitle);
+            System.Diagnostics.Debug.WriteLine("ate" + message.Date);
             messageService.SaveMessage();
+            System.Diagnostics.Debug.WriteLine("Message saved");
             sender.NumberOfMessages++;
             userService.updateUserDatabase();
             TempData["successMessage"] = "Meddelande nummer " 

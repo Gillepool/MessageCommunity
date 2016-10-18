@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MyCommunity.Models;
 using MyCommunity.Webbapp.Models;
+using MyCommunity.Service;
 
 namespace MyCommunity.Webbapp.Controllers
 {
@@ -23,7 +24,7 @@ namespace MyCommunity.Webbapp.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -77,9 +78,17 @@ namespace MyCommunity.Webbapp.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var user = await UserManager.FindAsync(model.Email, model.Password);
             switch (result)
             {
                 case SignInStatus.Success:
+                    UserLogin NewLogin = new UserLogin();
+                    NewLogin.LoggedInUser = user;
+                    NewLogin.TimeOfLogin = DateTime.Now;
+                    user.UserLogins.Add(NewLogin);
+                    
+                    await UserManager.UpdateAsync(user);
+                    
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -153,6 +162,8 @@ namespace MyCommunity.Webbapp.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                user.LastLogin = DateTime.Now;
+                //System.Diagnostics.Debug.WriteLine("LastLogin:" + user.LastLogin);
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
