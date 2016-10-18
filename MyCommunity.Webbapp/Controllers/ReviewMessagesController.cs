@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity;
 using MyCommunity.Models;
 using MyCommunity.Service;
 using MyCommunity.Webbapp.ViewModels;
+using System.Web.Services;
 
 namespace MyCommunity.Webbapp.Controllers
 {
@@ -28,16 +29,13 @@ namespace MyCommunity.Webbapp.Controllers
         public ActionResult Index()
         {
             var user = userService.GetUser(User.Identity.GetUserId());
-
             ReviewUserMessagesViewModel model = new ReviewUserMessagesViewModel();
-
             var UserMessages = messageService.GetUserMessages(user.Id).GroupBy(g => g.Sender).Select(m => new UserMessageInfo
             {
                 email = m.Key.Email,
                 userId = m.Key.Id,
                 NumberOfMessages = m.Where(k => k.IsRead == false).Count()
             });
-
             model.Messages = UserMessages;
             model.TotalMessages = user.NumberOfMessages;
             model.ReadMessages = user.NumberOfReadMessages;
@@ -55,24 +53,36 @@ namespace MyCommunity.Webbapp.Controllers
             messageViews = Mapper.Map<IEnumerable<Message>, IEnumerable<MessageViewModel>>(messages);
             return View(messageViews);
         }
-        [HttpPost]
-        public ActionResult messageRead(int? id)
-        {
-            var user = userService.GetUser(User.Identity.GetUserId());
-            if (id == null)
-            {
-                return RedirectToAction("ViewUserMessages", new { Id = user.Id });
-            }
-            Message message = messageService.GetMessage(id.Value);
-            if (!message.IsRead)
-            {
-                user.NumberOfReadMessages++;
-                message.IsRead = true;
-                messageService.SaveMessage();
-                userService.updateUserDatabase();
-            }
 
-            return ViewBag;
+        [HttpPost]
+        public void messageRead(int? Id)
+        {
+            System.Diagnostics.Debug.WriteLine("message read:" + Id);
+            var user = userService.GetUser(User.Identity.GetUserId());
+            if (Id == null)
+            {
+                return;
+            }
+            Message message = messageService.GetMessage(Id.Value);
+            System.Diagnostics.Debug.WriteLine("past get message");
+            if (message.ReceiverId == user.Id)
+            {
+                System.Diagnostics.Debug.WriteLine("past id check");
+                if (!message.IsRead)
+                {
+                    System.Diagnostics.Debug.WriteLine("message wasnt read. set message read");
+                    user.NumberOfReadMessages++;
+                    message.IsRead = true;
+                    messageService.SaveMessage();
+                    userService.updateUserDatabase();
+                }
+            }
+        }
+
+        [HttpPost]
+        public JsonResult Hey()
+        {
+            return Json(User.Identity.GetUserId());
         }
 
         //TODO null check
@@ -115,6 +125,7 @@ namespace MyCommunity.Webbapp.Controllers
                 {
                     messageService.DeleteMessage(message);
                     user.NumberOfdeletedMessages++;
+                    user.NumberOfMessages--;
                     messageService.SaveMessage();
                     userService.updateUserDatabase();
                 }
@@ -127,10 +138,7 @@ namespace MyCommunity.Webbapp.Controllers
             {
                 TempData["fail"] = "user does not own the message";
             }
-
-            return RedirectToAction("ViewUserMessages", new { Id = user.Id });
-
+            return RedirectToAction("ViewUserMessages", new { Id = MessageId });
         }
-
     }
 }
