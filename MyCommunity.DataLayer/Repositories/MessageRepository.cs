@@ -8,7 +8,7 @@ using MyCommunity.Models;
 
 namespace MyCommunity.DataLayer.Repositories
 {
-    public class MessageRepository : BasicOperations<Message>, IMessageRepository, IMessage<Message>
+    public class MessageRepository : BasicOperations<Message>, IMessageRepository
     {
         public MessageRepository(IDatabaseManager DbManager) : base(DbManager)
         {

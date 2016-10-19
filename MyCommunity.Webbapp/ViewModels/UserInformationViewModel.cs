@@ -10,12 +10,12 @@ namespace MyCommunity.Webbapp.ViewModels
     {
         [Display(Name = "email")]
         public string Email { get; set; }
-        [Display(Name = "NumerOfUnreadMessages")]
+        [Display(Name = "Numer of unread messages")]
         public int NumberOfUnreadMessages { get; set; }
         public DateTime LastLogin { get; set; }
-        [Display (Name = "NumberOfLoginsLastMonth")]
+        [Display (Name = "Number of logins last month")]
         public int NumberOfLoginsLastMonth { get; set; }
-        [Display(Name = "NumerOfDeletedMessages")]
+        [Display(Name = "Numer of deleted messages")]
         public int NumberOfDeletedMessages { get; set; }
     }
 }

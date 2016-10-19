@@ -21,6 +21,7 @@ namespace MyCommunity.DataLayer
 
         public DbSet<Message> Messages { get; set; }
         public DbSet<UserLogin> UserLogins { get; set; }
+        public DbSet<Group> Groups { get; set; }
            
 
         public static DatabaseContext Create()
@@ -38,6 +39,7 @@ namespace MyCommunity.DataLayer
             base.OnModelCreating(modelBuilder);
             modelBuilder.Configurations.Add(new UserLoginConfiguration());
             modelBuilder.Configurations.Add(new MessageConfiguration());
+            modelBuilder.Configurations.Add(new GroupConfiguration());
         }
     }
 }

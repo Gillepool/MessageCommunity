@@ -30,7 +30,7 @@ namespace MyCommunity.Models
         public virtual ICollection<Message> PublishedMessages { get; set; }
         public virtual ICollection<Message> ReceiverMessages { get; set; }
         public virtual ICollection<UserLogin> UserLogins { get; set; } 
-
-
+        public virtual ICollection<Group> Groups { get; set; }
+        
     }
 }

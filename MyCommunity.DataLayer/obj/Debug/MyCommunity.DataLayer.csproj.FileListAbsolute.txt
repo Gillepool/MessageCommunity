@@ -134,3 +134,4 @@ C:\Users\Daniel\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\My
 C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.AddedLoginModelTable.resources
 C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.AddDatebacktomessageplease.resources
 C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.dates.resources
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.Addedgroups.resources
