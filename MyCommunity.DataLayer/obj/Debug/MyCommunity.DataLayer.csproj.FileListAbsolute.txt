@@ -142,3 +142,9 @@ C:\Users\Daniel\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\My
 C:\Users\Daniel\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.removedsomething.resources
 C:\Users\Daniel\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.TookbackwhatIremoved.resources
 C:\Users\Daniel\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.stuff.resources
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.groupsandGroupMessage.resources
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.Something.resources
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.somevaribleisintnow.resources
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.removedsomething.resources
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.TookbackwhatIremoved.resources
+C:\Users\Sebastian\Source\Repos\MessageCommunity\MyCommunity.DataLayer\obj\Debug\MyCommunity.DataLayer.Migrations.stuff.resources

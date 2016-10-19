@@ -74,7 +74,7 @@ namespace MyCommunity.Webbapp.Controllers
                     user.NumberOfReadMessages++;
                     message.IsRead = true;
                     messageService.SaveMessage();
-                    userService.updateUserDatabase();
+                    userService.updateDatabase();
                 }
             }
         }
@@ -87,13 +87,9 @@ namespace MyCommunity.Webbapp.Controllers
             return RedirectToAction("ViewUserMessages", new { Id = Id });
         }
 
-
-        //todo error message if fail
-        // POST: ReviewMessages/Delete/5
         [HttpPost]
         public ActionResult Delete(int? MessageId)
         {
-            
             var user = userService.GetUser(User.Identity.GetUserId());
             if (MessageId == null)
             {
@@ -109,7 +105,7 @@ namespace MyCommunity.Webbapp.Controllers
                     user.NumberOfdeletedMessages++;
                     user.NumberOfMessages--;
                     messageService.SaveMessage();
-                    userService.updateUserDatabase();
+                    userService.updateDatabase();
                 }
                 catch
                 {

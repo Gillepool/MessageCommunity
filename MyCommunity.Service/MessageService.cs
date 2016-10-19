@@ -36,7 +36,7 @@ namespace MyCommunity.Service
             return messageRepository.GetMessageByInt(id);
         }
 
-        public IEnumerable<Message> GetMessages()
+        public IEnumerable<Message> GetAllMessages()
         {
             return messageRepository.GetAll();
         }
@@ -44,12 +44,6 @@ namespace MyCommunity.Service
         public IEnumerable<Message> GetUserMessages(string id)
         {
             return messageRepository.GetMany(m => m.ReceiverId == id);
-        }
-
-        public IEnumerable<Message> GetUserMessagesIncludingSenderInfo(string id)
-        {
-            //return messageRepository.GetUserMessagesIncludingSenderInfo(id);
-            return null;
         }
 
         public void SaveMessage()
@@ -65,13 +59,12 @@ namespace MyCommunity.Service
 
     public interface IMessageService
     {
-        IEnumerable<Message> GetMessages();
+        IEnumerable<Message> GetAllMessages();
         IEnumerable<Message> GetUserMessages(string id);
         Message GetMessage(int id);
-        IEnumerable<Message> GetUserMessagesIncludingSenderInfo(string id);
         void CreateMessage(Message message);
         void DeleteMessage(Message message);
         void SaveMessage();
-        IEnumerable<Message> GetUserMessagesToFrom(string v, string id);
+        IEnumerable<Message> GetUserMessagesToFrom(string receiver, string sender);
     }
 }

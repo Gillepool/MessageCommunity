@@ -24,11 +24,15 @@ namespace MyCommunity.Webbapp.Controllers
             this.userService = userService;
         }
 
-       
         [HttpPost]
         public ActionResult SendMessage(MessageViewModel newMessage, SendMessageViewModel userData)
         {
             IEnumerable<string> Receivers = new List<string>();
+            if(userData == null)
+            {
+                TempData["successMessage"] = "ogiltigt input";
+                return RedirectToAction("Index");
+            }
             Receivers = userData.UsersSelected;
             if (newMessage == null || userData == null || newMessage.MessageBody == null || newMessage.MessageTitle == null || userData == null ||  Receivers == null)
             {
@@ -36,13 +40,9 @@ namespace MyCommunity.Webbapp.Controllers
                 return RedirectToAction("Index");
             }
 
-            
-            
-            
             TempData["sucessMessage"] = "";
             foreach (string rc in Receivers)
             {
-                
                 System.Diagnostics.Debug.WriteLine(rc);
                 var receiver = userService.GetUser(rc);
                 Message message = Mapper.Map<MessageViewModel, Message>(newMessage);
@@ -52,29 +52,19 @@ namespace MyCommunity.Webbapp.Controllers
                 message.MessageBody = newMessage.MessageBody;
                 message.MessageTitle = newMessage.MessageTitle;
                 message.Dates = DateTime.Now;
-                
                 messageService.CreateMessage(message);
                 receiver.NumberOfMessages++;
                 try
                 {
-                    userService.updateUserDatabase();
+                    userService.updateDatabase();
                     TempData["successMessage"] += "Meddelande nummer " + message.MessageId + " avsänt till " + receiver.Email + ", " + message.Dates + Environment.NewLine;
                 }
                 catch
                 {
                     TempData["successMessage"] += "Lol, du kunde inte skicka meddelande till " + receiver.Email;
                 }
-               
             }
-           
-
             return RedirectToAction("Index");
-        }
-
-        public ActionResult SendGroupMessage()
-        {
-
-            return null;
         }
 
         public ActionResult Index()
@@ -89,6 +79,5 @@ namespace MyCommunity.Webbapp.Controllers
             MessageSendViewModel.UserList = new SelectList(user, "Value", "Text");
             return View(MessageSendViewModel);
         }
-
     }
 }

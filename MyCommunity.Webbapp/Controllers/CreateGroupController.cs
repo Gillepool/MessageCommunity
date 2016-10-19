@@ -25,7 +25,7 @@ namespace MyCommunity.Webbapp.Controllers
             this.userLoginService = userLoginService;
             this.groupService = groupService;
         }
-        // GET: CreateGroup
+
         public ActionResult Index()
         {
             return View();
@@ -39,12 +39,11 @@ namespace MyCommunity.Webbapp.Controllers
             System.Diagnostics.Debug.WriteLine("GroupName" + GroupName);
             Group group = new Group();
             group.GroupName = GroupName;
-            //group.Members.Add(Creator);
             try {
                 groupService.CreateGroup(group);
                 groupService.UpdateGroupDatabase();
                 Creator.Groups.Add(group);
-                userService.updateUserDatabase();
+                userService.updateDatabase();
                 TempData["successMessage"] = "Gruppen skapades av" + Creator.Email;
             }
             catch {

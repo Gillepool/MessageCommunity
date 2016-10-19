@@ -19,7 +19,6 @@ namespace MyCommunity.Webbapp.Controllers
         private readonly IUserService userService;
         private readonly IUserLoginService userLoginService;
         private readonly IGroupService groupService;
-       // private readonly IGroupMessageService groupMessageService;
 
         public GroupController(IMessageService messageService, IUserService userService, IUserLoginService userLoginService, IGroupService groupService)
         {
@@ -27,10 +26,8 @@ namespace MyCommunity.Webbapp.Controllers
             this.userService = userService;
             this.userLoginService = userLoginService;
             this.groupService = groupService;
-            //this.groupMessageService = groupMessageService;
         }
 
-        // GET: Group
         [HttpGet]
         public ActionResult Index()
         {
@@ -43,12 +40,11 @@ namespace MyCommunity.Webbapp.Controllers
         public void LeaveGroup(string id)
         {
             var user = userService.GetUser(User.Identity.GetUserId());
-
             Group group = groupService.GetGroupById(id);
             try
             {
                 user.Groups.Remove(group);
-                userService.updateUserDatabase();
+                userService.updateDatabase();
                 TempData["GroupJoinMessage"] = "You have successfully left the group: " + group.GroupName;
             }
             catch
@@ -97,7 +93,6 @@ namespace MyCommunity.Webbapp.Controllers
                 groupService.UpdateGroupDatabase();
                 System.Diagnostics.Debug.WriteLine("Database updated?!");
                 return "Message Succesfully sent";
-
             }
             catch
             {

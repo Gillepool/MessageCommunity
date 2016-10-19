@@ -29,26 +29,18 @@ namespace MyCommunity.Webbapp.Controllers
         public ActionResult Index()
         {
             UserInformationViewModel UserInfo = new UserInformationViewModel();
-            var user = userService.GetUser(User.Identity.GetUserId());
-            
-            
+            var user = userService.GetUser(User.Identity.GetUserId());   
             UserInfo.Email = user.Email;
             UserInfo.LastLogin = user.LastLogin;
-            UserInfo.NumberOfUnreadMessages = user.NumberOfMessages - (user.NumberOfReadMessages - user.NumberOfdeletedMessages);
-            
+            UserInfo.NumberOfUnreadMessages = user.NumberOfMessages - (user.NumberOfReadMessages - user.NumberOfdeletedMessages);          
             var Logins = userLoginService.GetUserLogins(user.Id);
             UserInfo.NumberOfLoginsLastMonth = Logins.Count(l => l.TimeOfLogin > DateTime.Now.AddDays(-30));
-            //update logins last month, update last login
-            //UserInfo = Mapper.Map<ApplicationUser, UserInformationViewModel>(user);
             user.LastLogin = DateTime.Now;
             System.Diagnostics.Debug.WriteLine("last user login time: " + user.LastLogin);
             userService.UpdateUser(user);
-            userService.updateUserDatabase();
-
-            userLoginService.SaveUserLogin();
+            userService.updateDatabase();
             return View(UserInfo);
         }
-
 
         public ActionResult GetMessages()
         {
@@ -59,7 +51,6 @@ namespace MyCommunity.Webbapp.Controllers
             MessageViewModels = Mapper.Map<IEnumerable<Message>, IEnumerable<MessageViewModel>>(Messages);
             return View(MessageViewModels);
         }
-
 
         [HttpPost]
         public ActionResult Create(SendMessageViewModel newMessage)
@@ -72,7 +63,7 @@ namespace MyCommunity.Webbapp.Controllers
             messageService.CreateMessage(message);
             messageService.SaveMessage();
             sender.NumberOfMessages++;
-            
+
             return RedirectToAction("Index");
         }
      }

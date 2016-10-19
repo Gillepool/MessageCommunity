@@ -43,23 +43,20 @@ namespace MyCommunity.Webbapp.Controllers
 
         }
 
-
         public ActionResult JoinGroup(JoinGroupViewModel joinGroupViewModel)
         {
             var user = userService.GetUser(User.Identity.GetUserId());
-
             Group group = groupService.GetGroupByIntId(joinGroupViewModel.GroupId);
             try
             {
                 user.Groups.Add(group);
-                userService.updateUserDatabase();
+                userService.updateDatabase();
                 TempData["GroupJoinMessage"] = "You have successfully joined the group: " + group.GroupName;
             }
             catch
             {
                 TempData["GroupJoinMessage"] = "Failed to join group";
             }
-
             return RedirectToAction("Index");
         }
     }

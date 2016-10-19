@@ -32,7 +32,6 @@
         </div>
         <div class="form-group">
             @Html.ListBoxFor(x => x.UsersSelected, Model.UserList, new Dictionary<string, object>() { { "class", "chosen" }, { "data-placeholder", "User" } });
-
            @*@Html.DropDownListFor(m => m.Id, Model.UserList, "Select", new { @class = "multiselect", @multiple = "multiple" })*@
             @Html.ValidationMessageFor(m => m.UsersSelected)
         </div>

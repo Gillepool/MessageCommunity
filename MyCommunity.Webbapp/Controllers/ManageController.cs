@@ -50,7 +50,6 @@ namespace MyCommunity.Webbapp.Controllers
             }
         }
 
-        //
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
         {

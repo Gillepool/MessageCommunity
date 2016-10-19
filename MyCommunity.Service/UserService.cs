@@ -32,7 +32,7 @@ namespace MyCommunity.Service
             return userRepository.GetAll();
         }
 
-        public void updateUserDatabase()
+        public void updateDatabase()
         {
             unitOfWork.CommitToDatabase();
         }
@@ -55,7 +55,7 @@ namespace MyCommunity.Service
         IEnumerable<ApplicationUser> GetUsers();
         ApplicationUser GetUser(string id);
         IEnumerable<ApplicationUser> GetAllUsersBut(string id);
-        void updateUserDatabase();
+        void updateDatabase();
         void UpdateUser(ApplicationUser user);
     }
 }
