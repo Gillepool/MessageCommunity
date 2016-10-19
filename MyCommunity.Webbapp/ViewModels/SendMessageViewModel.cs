@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace MyCommunity.Webbapp.ViewModels
 {
-    public class MessageSendViewModel
+    public class SendMessageViewModel
     {
         [Display(Name = "Email")]
         public string UserEmail { get; set; }

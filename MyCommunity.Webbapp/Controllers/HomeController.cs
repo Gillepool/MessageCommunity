@@ -62,10 +62,10 @@ namespace MyCommunity.Webbapp.Controllers
 
 
         [HttpPost]
-        public ActionResult Create(MessageSendViewModel newMessage)
+        public ActionResult Create(SendMessageViewModel newMessage)
         {
             var sender = userService.GetUser(User.Identity.GetUserId());
-            Message message = Mapper.Map<MessageSendViewModel, Message>(newMessage);
+            Message message = Mapper.Map<SendMessageViewModel, Message>(newMessage);
             message.SenderId = sender.Id;
             message.IsRead = false;
             message.Dates = DateTime.Now;

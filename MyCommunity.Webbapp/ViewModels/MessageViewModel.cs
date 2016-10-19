@@ -5,6 +5,9 @@ using System.Web;
 
 namespace MyCommunity.Webbapp.ViewModels
 {
+    /*
+     * 
+     */
     public class MessageViewModel
     {
         public int MessageId { get; set; }

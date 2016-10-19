@@ -26,16 +26,10 @@
             </tr>
         }
     }
-    <tr>
-        <td>
-            <p>Total number of messages: @Html.DisplayFor(model => model.TotalMessages)</p>
-        </td>
-        <td>
-            <p>Number of deleted messages : @Html.DisplayFor(model => model.DeletedMessages)</p>
-        </td>
-        <td>
-            <p>Number of read messages : @Html.DisplayFor(model => model.ReadMessages)</p>
-        </td>
-    </tr>
-
 </table>
+
+<footer>
+        <p>Total number of messages: @Html.DisplayFor(model => model.TotalMessages)</p><br />
+        <p>Number of deleted messages : @Html.DisplayFor(model => model.DeletedMessages)</p><br />
+        <p>Number of read messages : @Html.DisplayFor(model => model.ReadMessages)</p>
+</footer>

@@ -26,7 +26,7 @@ namespace MyCommunity.Webbapp.Controllers
 
         // Post: SendMessages
         [HttpPost]
-        public ActionResult SendPersonalMessage(MessageViewModel newMessage, MessageSendViewModel userData)
+        public ActionResult SendPersonalMessage(MessageViewModel newMessage, SendMessageViewModel userData)
         {
             var receiver = userService.GetUser(userData.Id);
             Message message = Mapper.Map<MessageViewModel, Message>(newMessage);
@@ -56,7 +56,7 @@ namespace MyCommunity.Webbapp.Controllers
 
         public ActionResult Index()
         {
-            MessageSendViewModel MessageSendViewModel = new MessageSendViewModel();
+            SendMessageViewModel MessageSendViewModel = new SendMessageViewModel();
             var sender = userService.GetUser(User.Identity.GetUserId());
             var user = userService.GetAllUsersBut(sender.Id).Select(a => new SelectListItem
             {
