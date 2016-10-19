@@ -13,5 +13,6 @@ namespace MyCommunity.Webbapp.ViewModels
         public string UserEmail { get; set; }
         public string Id { get; set; }
         public IEnumerable<SelectListItem> UserList { get; set; }
+        public IEnumerable<String> UsersSelected { get; set; }
     }
 }

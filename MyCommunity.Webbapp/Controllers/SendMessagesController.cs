@@ -24,32 +24,50 @@ namespace MyCommunity.Webbapp.Controllers
             this.userService = userService;
         }
 
-        // Post: SendMessages
+       
         [HttpPost]
-        public ActionResult SendPersonalMessage(MessageViewModel newMessage, SendMessageViewModel userData)
+        public ActionResult SendMessage(MessageViewModel newMessage, SendMessageViewModel userData)
         {
-            if (newMessage == null || userData == null || newMessage.MessageBody == null || newMessage.MessageTitle == null || userData.Id == null)
+            IEnumerable<string> Receivers = new List<string>();
+            Receivers = userData.UsersSelected;
+            if (newMessage == null || userData == null || newMessage.MessageBody == null || newMessage.MessageTitle == null || userData == null ||  Receivers == null)
             {
                 TempData["successMessage"] = "ogiltigt input";
                 return RedirectToAction("Index");
             }
-            var receiver = userService.GetUser(userData.Id);
-            Message message = Mapper.Map<MessageViewModel, Message>(newMessage);
-            message.SenderId = User.Identity.GetUserId();
-            message.ReceiverId = userData.Id;
-            message.IsRead = false;
-            message.MessageBody = newMessage.MessageBody;
-            message.MessageTitle = newMessage.MessageTitle;
-            message.Dates = DateTime.Now;
-            messageService.CreateMessage(message);
-            messageService.SaveMessage();
-            receiver.NumberOfMessages++;
-            userService.updateUserDatabase();
-            TempData["successMessage"] = "Meddelande nummer " 
-                + message.MessageId 
-                + " avsänt till " 
-                + receiver.Email + ", " 
-                + message.Dates;
+
+            
+            
+            
+            TempData["sucessMessage"] = "";
+            foreach (string rc in Receivers)
+            {
+                
+                System.Diagnostics.Debug.WriteLine(rc);
+                var receiver = userService.GetUser(rc);
+                Message message = Mapper.Map<MessageViewModel, Message>(newMessage);
+                message.SenderId = User.Identity.GetUserId();
+                message.ReceiverId = receiver.Id;
+                message.IsRead = false;
+                message.MessageBody = newMessage.MessageBody;
+                message.MessageTitle = newMessage.MessageTitle;
+                message.Dates = DateTime.Now;
+                
+                messageService.CreateMessage(message);
+                receiver.NumberOfMessages++;
+                try
+                {
+                    userService.updateUserDatabase();
+                    TempData["successMessage"] += "Meddelande nummer " + message.MessageId + " avsänt till " + receiver.Email + ", " + message.Dates + Environment.NewLine;
+                }
+                catch
+                {
+                    TempData["successMessage"] += "Lol, du kunde inte skicka meddelande till " + receiver.Email;
+                }
+               
+            }
+           
+
             return RedirectToAction("Index");
         }
 

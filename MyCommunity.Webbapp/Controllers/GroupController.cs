@@ -58,18 +58,18 @@ namespace MyCommunity.Webbapp.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<GroupMessageViewModel> ViewGroupMessages(string id)
+        public JsonResult ViewGroupMessages(string id)
         {
             System.Diagnostics.Debug.WriteLine("ID: " + id);
             var group = groupService.GetGroupByIntId(Int32.Parse(id));
-            var messages = group.GroupMessages;
+            var messages = group.GroupMessages.OrderByDescending(m => m.PostDate);
             System.Diagnostics.Debug.WriteLine("HERE!" + messages);
             IEnumerable<GroupMessageViewModel> groupMessageViewModel = Mapper.Map<IEnumerable<GroupMessage>, IEnumerable<GroupMessageViewModel>>(messages);
             foreach (GroupMessageViewModel gm in groupMessageViewModel) {
                 System.Diagnostics.Debug.WriteLine("Foreach body: " + gm.MessageBody);
                 System.Diagnostics.Debug.WriteLine("FOreach Title" + gm.MessageTitle);
             }
-            return groupMessageViewModel;
+            return Json(groupMessageViewModel, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

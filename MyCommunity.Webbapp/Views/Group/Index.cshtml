@@ -16,22 +16,14 @@
                   
                     data: { id: id },
                     success: function (response) {
-                        alert("test1");
-                        var a = JSON.stringify(response);
-                        alert("test2");
-                        a.forEach(function (data) {
-                            alert("testfss");
-                        })
-
-                        var result = JSON.parse(resultGroupMessages);
-                        for (var i in result) {
-                            alert("test");
-                          
+                        var target = $("#productsTable");
+                        target.empty();
+                        for (var i = 0; i < response.length; i++) {
+                            var product = response[i];
+                            //alert(product);
+                            target.append("<tr> <td><b>Message Title:</b>" + product.MessageTitle + "</td>  <td><b>Message Body:</b></d>"
+                            + product.MessageBody + "</td></tr>");
                         }
-                        //$.each(resultGroupMessages, function () {
-                            
-                        //})
-                       
                    }
                 });
         }
@@ -91,9 +83,10 @@
         </div>
     //exitsing html stuff
 }
+<div id="productsTable">
+ 
+</div>
 
 <p id="SendMessageResult">
-    <div id="id"></div>
-    <div id="firstName"></div>
-    <div id="lastName"></div>
+   
 </p>
