@@ -48,6 +48,8 @@ namespace MyCommunity.Service
         {
             unitOfWork.CommitToDatabase();
         }
+
+     
     }
 
     public interface IGroupService

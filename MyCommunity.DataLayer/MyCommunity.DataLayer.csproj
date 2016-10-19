@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configurations\GroupConfiguration.cs" />
+    <Compile Include="Configurations\GroupMessageConfiguration.cs" />
     <Compile Include="Configurations\MessageConfiguration.cs" />
     <Compile Include="Configurations\UserLoginConfiguration.cs" />
     <Compile Include="DatabaseContext.cs" />
@@ -114,8 +115,13 @@
     <Compile Include="Migrations\201610190912435_Added groups.Designer.cs">
       <DependentUpon>201610190912435_Added groups.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610191141578_groups and GroupMessage.cs" />
+    <Compile Include="Migrations\201610191141578_groups and GroupMessage.Designer.cs">
+      <DependentUpon>201610191141578_groups and GroupMessage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\GroupMessageRepository.cs" />
     <Compile Include="Repositories\GroupRepository.cs" />
     <Compile Include="Repositories\MessageRepository.cs" />
     <Compile Include="Repositories\UserLoginRepository.cs" />
@@ -164,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610190912435_Added groups.resx">
       <DependentUpon>201610190912435_Added groups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610191141578_groups and GroupMessage.resx">
+      <DependentUpon>201610191141578_groups and GroupMessage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

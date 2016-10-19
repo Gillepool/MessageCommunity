@@ -1,0 +1,35 @@
+﻿@model MyCommunity.Webbapp.ViewModels.CreateGroupViewModel
+@{
+    ViewBag.Title = "Creat group page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    @using (Html.BeginForm("CreateGroup", "CreateGroup", FormMethod.Post,
+                                                                        new { enctype = "multipart/form-data", @class = "form-inline" }))
+    {
+
+        <div class="form-group">
+            <label class="sr-only" for="gadgetTitle">Group Name</label>
+            <input type="text" class="form-control" name="GroupName" placeholder="Title">
+        </div>
+       
+        <div>
+            <button type="submit" class="btn btn-primary">CreateGroup</button>
+        </div>
+    }
+    @{var successMessage = TempData["successMessage"]; }
+    @if (successMessage != null)
+    {
+        <div>
+            @successMessage
+        </div>
+    }
+
+</body>
+</html>

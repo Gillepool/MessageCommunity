@@ -22,6 +22,8 @@ namespace MyCommunity.Webbapp.Mappers
 
             CreateMap<MessageViewModel, Message>();
             CreateMap<ReviewMessageViewModel, Message>();
+            CreateMap<GroupViewModel, Group>();
+            CreateMap<CreateGroupViewModel, Group>();
         }
     }
 }

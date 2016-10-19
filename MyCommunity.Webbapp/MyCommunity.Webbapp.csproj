@@ -211,11 +211,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CreateGroupController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReviewMessagesController.cs" />
     <Compile Include="Controllers\SendMessagesController.cs" />
+    <Compile Include="ViewModels\CreateGroupViewModel.cs" />
+    <Compile Include="ViewModels\GroupViewModel.cs" />
+    <Compile Include="ViewModels\ReviewGroupMessagesViewModel.cs" />
     <Compile Include="ViewModels\ReviewMessageViewModel.cs" />
     <Compile Include="ViewModels\ReviewUserMessagesViewModel.cs" />
     <Compile Include="ViewModels\UserInformationViewModel.cs" />
@@ -294,10 +298,11 @@
     <Content Include="Views\SendMessages\Index.cshtml" />
     <Content Include="Views\ReviewMessages\Index.cshtml" />
     <Content Include="Views\ReviewMessages\ViewUserMessages.cshtml" />
+    <Content Include="Views\CreateGroup\Index.cshtml" />
+    <Content Include="Views\Group\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Group\" />
     <Folder Include="Views\Messages\" />
   </ItemGroup>
   <ItemGroup>

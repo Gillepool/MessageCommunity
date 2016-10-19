@@ -28,6 +28,11 @@ namespace MyCommunity.Webbapp.Controllers
         [HttpPost]
         public ActionResult SendPersonalMessage(MessageViewModel newMessage, SendMessageViewModel userData)
         {
+            if (newMessage == null || userData == null || newMessage.MessageBody == null || newMessage.MessageTitle == null || userData.Id == null)
+            {
+                TempData["successMessage"] = "ogiltigt input";
+                return RedirectToAction("Index");
+            }
             var receiver = userService.GetUser(userData.Id);
             Message message = Mapper.Map<MessageViewModel, Message>(newMessage);
             message.SenderId = User.Identity.GetUserId();
