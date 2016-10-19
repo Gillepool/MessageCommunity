@@ -79,12 +79,6 @@ namespace MyCommunity.Webbapp.Controllers
             }
         }
 
-        [HttpPost]
-        public JsonResult Hey()
-        {
-            return Json(User.Identity.GetUserId());
-        }
-
         //TODO null check
         [HttpPost]
         public ActionResult GoToViewUserMessages(string Id)
@@ -93,32 +87,20 @@ namespace MyCommunity.Webbapp.Controllers
             return RedirectToAction("ViewUserMessages", new { Id = Id });
         }
 
-        // GET: ReviewMessages/Details/5
-        public ActionResult Details(int Id)
-        {
-            return View();
-        }
-
-        // GET: ReviewMessages/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // GET: ReviewMessages/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
 
         //todo error message if fail
         // POST: ReviewMessages/Delete/5
         [HttpPost]
-        public ActionResult Delete(int MessageId)
+        public ActionResult Delete(int? MessageId)
         {
+            
             var user = userService.GetUser(User.Identity.GetUserId());
+            if (MessageId == null)
+            {
+                return RedirectToAction("index");
+            }
             System.Diagnostics.Debug.WriteLine("message id" + MessageId);
-            Message message = messageService.GetMessage(MessageId);
+            Message message = messageService.GetMessage(MessageId.Value);
             if (message.ReceiverId == user.Id)
             {
                 try
@@ -138,7 +120,7 @@ namespace MyCommunity.Webbapp.Controllers
             {
                 TempData["fail"] = "user does not own the message";
             }
-            return RedirectToAction("ViewUserMessages", new { Id = MessageId });
+            return RedirectToAction("ViewUserMessages", new { Id = message.SenderId });
         }
     }
 }
