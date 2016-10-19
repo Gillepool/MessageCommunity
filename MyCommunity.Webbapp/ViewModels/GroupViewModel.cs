@@ -10,5 +10,6 @@ namespace MyCommunity.Webbapp.ViewModels
     {
         [Display(Name = "Group Name")]
         public string GroupName;
+        public int GroupId;
     }
 }

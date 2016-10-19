@@ -14,11 +14,7 @@ namespace MyCommunity.DataLayer.Repositories
         {
         }
 
-        public Message GetByIntId(int id)
-        {
-            throw new NotImplementedException();
-        }
-
+      
         public Message GetMessageByInt(int id)
         {
             return this.databaseContext.Messages.Where(m => m.MessageId == id).FirstOrDefault();

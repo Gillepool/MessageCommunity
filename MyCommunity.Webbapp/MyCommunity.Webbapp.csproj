@@ -214,11 +214,15 @@
     <Compile Include="Controllers\CreateGroupController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JoinGroupController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReviewMessagesController.cs" />
     <Compile Include="Controllers\SendMessagesController.cs" />
     <Compile Include="ViewModels\CreateGroupViewModel.cs" />
+    <Compile Include="ViewModels\GroupMessageViewModel.cs" />
+    <Compile Include="ViewModels\GroupSendMessageViewModel.cs" />
     <Compile Include="ViewModels\GroupViewModel.cs" />
+    <Compile Include="ViewModels\JoinGroupViewModel.cs" />
     <Compile Include="ViewModels\ReviewGroupMessagesViewModel.cs" />
     <Compile Include="ViewModels\ReviewMessageViewModel.cs" />
     <Compile Include="ViewModels\ReviewUserMessagesViewModel.cs" />
@@ -300,6 +304,7 @@
     <Content Include="Views\ReviewMessages\ViewUserMessages.cshtml" />
     <Content Include="Views\CreateGroup\Index.cshtml" />
     <Content Include="Views\Group\Index.cshtml" />
+    <Content Include="Views\JoinGroup\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

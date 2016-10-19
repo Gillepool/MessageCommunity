@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configurations\GroupConfiguration.cs" />
-    <Compile Include="Configurations\GroupMessageConfiguration.cs" />
     <Compile Include="Configurations\MessageConfiguration.cs" />
     <Compile Include="Configurations\UserLoginConfiguration.cs" />
     <Compile Include="DatabaseContext.cs" />
@@ -119,6 +118,26 @@
     <Compile Include="Migrations\201610191141578_groups and GroupMessage.Designer.cs">
       <DependentUpon>201610191141578_groups and GroupMessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610191537311_Something.cs" />
+    <Compile Include="Migrations\201610191537311_Something.Designer.cs">
+      <DependentUpon>201610191537311_Something.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610191706220_some varible is int now.cs" />
+    <Compile Include="Migrations\201610191706220_some varible is int now.Designer.cs">
+      <DependentUpon>201610191706220_some varible is int now.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610191711579_removed something.cs" />
+    <Compile Include="Migrations\201610191711579_removed something.Designer.cs">
+      <DependentUpon>201610191711579_removed something.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610191714032_Took back what I removed.cs" />
+    <Compile Include="Migrations\201610191714032_Took back what I removed.Designer.cs">
+      <DependentUpon>201610191714032_Took back what I removed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610191718084_stuff.cs" />
+    <Compile Include="Migrations\201610191718084_stuff.Designer.cs">
+      <DependentUpon>201610191718084_stuff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\GroupMessageRepository.cs" />
@@ -173,6 +192,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610191141578_groups and GroupMessage.resx">
       <DependentUpon>201610191141578_groups and GroupMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610191537311_Something.resx">
+      <DependentUpon>201610191537311_Something.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610191706220_some varible is int now.resx">
+      <DependentUpon>201610191706220_some varible is int now.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610191711579_removed something.resx">
+      <DependentUpon>201610191711579_removed something.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610191714032_Took back what I removed.resx">
+      <DependentUpon>201610191714032_Took back what I removed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610191718084_stuff.resx">
+      <DependentUpon>201610191718084_stuff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

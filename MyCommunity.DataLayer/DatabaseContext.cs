@@ -41,7 +41,7 @@ namespace MyCommunity.DataLayer
             modelBuilder.Configurations.Add(new UserLoginConfiguration());
             modelBuilder.Configurations.Add(new MessageConfiguration());
             modelBuilder.Configurations.Add(new GroupConfiguration());
-            modelBuilder.Configurations.Add(new GroupMessageConfiguration());
+            //modelBuilder.Configurations.Add(new GroupMessageConfiguration());
         }
     }
 }

@@ -1,0 +1,26 @@
+﻿
+@model MyCommunity.Webbapp.ViewModels.JoinGroupViewModel
+@{
+    ViewBag.Title = "UserMessages Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Users</h2>
+<table class="table">
+ 
+        @using (Html.BeginForm("JoinGroup", "JoinGroup", FormMethod.Post,
+                                                                        new { enctype = "multipart/form-data", @class = "form-inline" }))
+        {
+            <tr>
+                <td>
+                    <div class="form-group">
+                        @Html.DropDownListFor(m => m.GroupId, Model.GroupList)
+                        
+                    </div>
+                    <button type="submit" class="btn btn-primary">Join Group</button>
+                </td>
+            </tr>
+        }
+</table>
+<footer>
+
+</footer>

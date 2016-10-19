@@ -68,7 +68,6 @@ namespace MyCommunity.Webbapp.Controllers
                 Text = a.Email,
                 Value = a.Id
             });
-
             MessageSendViewModel.UserList = new SelectList(user, "Value", "Text");
             return View(MessageSendViewModel);
         }

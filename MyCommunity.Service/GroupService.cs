@@ -49,7 +49,12 @@ namespace MyCommunity.Service
             unitOfWork.CommitToDatabase();
         }
 
-     
+        public Group GetGroupByIntId(int id)
+        {
+            return groupRepository.GetGroupById(id);
+        }
+
+       
     }
 
     public interface IGroupService
@@ -59,5 +64,6 @@ namespace MyCommunity.Service
         void DeleteGroup(Group group);
         IEnumerable<Group> GetAllGroups();
         void UpdateGroupDatabase();
+        Group GetGroupByIntId(int id);
     }
 }

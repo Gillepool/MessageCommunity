@@ -13,9 +13,18 @@ namespace MyCommunity.DataLayer.Repositories
         public GroupRepository(IDatabaseManager DbManager) : base(DbManager)
         {
         }
+
+        public Group GetGroupById(int id)
+        {
+            return this.databaseContext.Groups.Where(m => m.GroupId == id).FirstOrDefault();
+        }
+
+       
     }
 
     public interface IGroupRepository : GenericInterfaceRepository<Group>
     {
+        Group GetGroupById(int id);
+        
     }
 }

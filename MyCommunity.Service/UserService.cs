@@ -46,6 +46,8 @@ namespace MyCommunity.Service
         {
             return userRepository.GetMany(u => u.Id != id);
         }
+
+     
     }
 
     public interface IUserService

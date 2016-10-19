@@ -11,5 +11,6 @@ namespace MyCommunity.Models
         public int GroupId { get; set; }
         public string GroupName { get; set; }
         public virtual ICollection<ApplicationUser> Members { get; set; }
+        public virtual ICollection<GroupMessage> GroupMessages { get; set; }
     }
 }

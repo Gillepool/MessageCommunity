@@ -1,1 +1,99 @@
-﻿
+﻿@model IEnumerable<MyCommunity.Webbapp.ViewModels.GroupViewModel>
+@using MyCommunity.Webbapp.ViewModels
+@{
+    ViewBag.Title = "UserMessages Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewUserMessages</title>
+    <script type="text/javascript">
+        function loadGroupMessage(id) {
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("ViewGroupMessages", "Group")',
+                  
+                    data: { id: id },
+                    success: function (response) {
+                        alert("test1");
+                        var a = JSON.stringify(response);
+                        alert("test2");
+                        a.forEach(function (data) {
+                            alert("testfss");
+                        })
+
+                        var result = JSON.parse(resultGroupMessages);
+                        for (var i in result) {
+                            alert("test");
+                          
+                        }
+                        //$.each(resultGroupMessages, function () {
+                            
+                        //})
+                       
+                   }
+                });
+        }
+
+        function sendMessage(id) {
+            var MessageVM = {
+                MessageBody: document.getElementById("MessageBody").value,
+                MessageTitle: document.getElementById("MessageTitle").value
+            };
+            
+            $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("SendGroupMessage", "Group")',
+                    data: { GroupId: id, MessageVM},
+                    success: function (result) {
+                        document.getElementById('SendMessageResult').innerHTML = result;
+                    },
+                    error: function (result) {
+                        document.getElementById('SendMessageResult').innerHTML = result;
+                    }
+                });
+        }
+    </script>
+</head>
+<h2>Users</h2>
+<table class="table">
+    @foreach (var group in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => group.GroupName)
+                <input value=@group.GroupId name="Id" hidden>
+            </td>
+
+            <td>
+                 <button onclick="loadGroupMessage('@group.GroupId');">Show Group Messages</button>
+            </td>
+
+            <td>
+                <button onclick="sendMessage('@group.GroupId');">Send Message To Group</button>
+            </td>
+        </tr>
+    }
+</table>
+
+<div>Send message to group:</div>
+@using (Html.BeginForm())
+{
+
+        <div class="form-group">
+            <label class="sr-only" for="Title">Title</label>
+            <input type="text" class="form-control" name="MessageTitle" placeholder="Title" id="MessageTitle">
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="Body">Message Body</label>
+            <input type="text" class="form-control" name="MessageBody" placeholder="Message" id="MessageBody">
+        </div>
+    //exitsing html stuff
+}
+
+<p id="SendMessageResult">
+    <div id="id"></div>
+    <div id="firstName"></div>
+    <div id="lastName"></div>
+</p>
