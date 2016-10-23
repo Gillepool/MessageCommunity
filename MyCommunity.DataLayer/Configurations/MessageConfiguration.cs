@@ -17,6 +17,8 @@ namespace MyCommunity.DataLayer.Configurations
             Property(m => m.MessageBody).IsRequired().HasMaxLength(255);
             Property(m => m.MessageTitle).IsRequired().HasMaxLength(50);
             Property(m => m.Dates).IsRequired();
+            this.HasRequired(x => x.Receiver).WithMany(x => x.ReceiverMessages).HasForeignKey(x => x.ReceiverId).WillCascadeOnDelete(false);
+            this.HasRequired(x => x.Sender).WithMany(x => x.PublishedMessages).HasForeignKey(x => x.SenderId).WillCascadeOnDelete(false);
         }
     }
 }
