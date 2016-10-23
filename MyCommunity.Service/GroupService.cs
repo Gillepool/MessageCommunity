@@ -24,11 +24,6 @@ namespace MyCommunity.Service
             this.groupRepository = groupRepository;
         }
 
-        public Group GetGroupById(string id)
-        {
-            return groupRepository.GetById(id);
-        }
-
         public void CreateGroup(Group group)
         {
             groupRepository.Insert(group);
@@ -49,7 +44,7 @@ namespace MyCommunity.Service
             unitOfWork.CommitToDatabase();
         }
 
-        public Group GetGroupByIntId(int id)
+        public Group GetGroupById(int id)
         {
             return groupRepository.GetGroupById(id);
         }
@@ -59,11 +54,10 @@ namespace MyCommunity.Service
 
     public interface IGroupService
     {
-        Group GetGroupById(string id);
         void CreateGroup(Group group);
         void DeleteGroup(Group group);
         IEnumerable<Group> GetAllGroups();
         void UpdateGroupDatabase();
-        Group GetGroupByIntId(int id);
+        Group GetGroupById(int id);
     }
 }

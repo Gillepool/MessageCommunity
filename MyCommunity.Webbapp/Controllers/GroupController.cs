@@ -28,6 +28,10 @@ namespace MyCommunity.Webbapp.Controllers
             this.groupService = groupService;
         }
 
+        /// <summary>
+        /// Fetches all the groups the current user has joined
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult Index()
         {
@@ -36,62 +40,53 @@ namespace MyCommunity.Webbapp.Controllers
             return View(groupViewModels);
         }
 
-        [HttpPost]
-        public void LeaveGroup(string id)
-        {
-            var user = userService.GetUser(User.Identity.GetUserId());
-            Group group = groupService.GetGroupById(id);
-            try
-            {
-                user.Groups.Remove(group);
-                userService.updateDatabase();
-                TempData["GroupJoinMessage"] = "You have successfully left the group: " + group.GroupName;
-            }
-            catch
-            {
-                TempData["GroupJoinMessage"] = "Failed to leave group sucker";
-            }
-        }
-
+        /// <summary>
+        /// View all messages from a specific group
+        /// </summary>
+        /// <param name="groupId">The id identifying the group</param>
+        /// <returns></returns>
         [HttpGet]
         public JsonResult ViewGroupMessages(string id)
         {
-            System.Diagnostics.Debug.WriteLine("ID: " + id);
-            var group = groupService.GetGroupByIntId(Int32.Parse(id));
-            var messages = group.GroupMessages.OrderByDescending(m => m.PostDate);
-            System.Diagnostics.Debug.WriteLine("HERE!" + messages);
-            IEnumerable<GroupMessageViewModel> groupMessageViewModel = Mapper.Map<IEnumerable<GroupMessage>, IEnumerable<GroupMessageViewModel>>(messages);
-            foreach (GroupMessageViewModel gm in groupMessageViewModel) {
-                System.Diagnostics.Debug.WriteLine("Foreach body: " + gm.MessageBody);
-                System.Diagnostics.Debug.WriteLine("FOreach Title" + gm.MessageTitle);
+            if(id == null) {
+                 throw new ArgumentNullException("No id provided");
             }
+            var group = groupService.GetGroupById(Int32.Parse(id));
+            var messages = group.GroupMessages.OrderByDescending(m => m.PostDate);
+            IEnumerable<GroupMessageViewModel> groupMessageViewModel = Mapper.Map<IEnumerable<GroupMessage>, IEnumerable<GroupMessageViewModel>>(messages);
             return Json(groupMessageViewModel, JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// Creates a group message in database. 
+        /// </summary>
+        /// <param name="GroupId">Id of the group to receive the message</param>
+        /// <param name="MessageVM">The content of the message</param>
+        /// <returns>A string conatining a result message</returns>
         [HttpPost]
         public string SendGroupMessage(int? GroupId, GroupSendMessageViewModel MessageVM)
         {
-            if (MessageVM == null || MessageVM.MessageTitle == null || GroupId == null || MessageVM.MessageBody == null) {
-                 return "Invalid input";
+            if (MessageVM == null || MessageVM.MessageTitle == null || GroupId == null || MessageVM.MessageBody == null)
+            {
+                return "Invalid input";
             }
-            System.Diagnostics.Debug.WriteLine("BEFORE TRYE1112112");
-            var user = userService.GetUser(User.Identity.GetUserId());
-            Group group = groupService.GetGroupByIntId(GroupId.Value);
-            GroupMessage groupMessage = new GroupMessage();
-            groupMessage.MessageTitle = MessageVM.MessageTitle;
-            groupMessage.MessageBody = MessageVM.MessageBody;
-            groupMessage.PostDate = DateTime.Now;
-            groupMessage.GroupId = GroupId.Value;
-            System.Diagnostics.Debug.WriteLine("USERID :" + User.Identity.GetUserId());
-            groupMessage.SenderId = user.Id;
-            System.Diagnostics.Debug.WriteLine("BEFORE TRYE");
+
             try
             {
-                System.Diagnostics.Debug.WriteLine("HERE?!??!");
+                var user = userService.GetUser(User.Identity.GetUserId());
+                Group group = groupService.GetGroupById(GroupId.Value);
+                if (group == null)
+                {
+                    throw new ArgumentNullException("Group does not exist");
+                }
+                GroupMessage groupMessage = new GroupMessage();
+                groupMessage.MessageTitle = MessageVM.MessageTitle;
+                groupMessage.MessageBody = MessageVM.MessageBody;
+                groupMessage.PostDate = DateTime.Now;
+                groupMessage.GroupId = GroupId.Value;
+                groupMessage.SenderId = user.Id;
                 group.GroupMessages.Add(groupMessage);
-                System.Diagnostics.Debug.WriteLine("Message Added");
                 groupService.UpdateGroupDatabase();
-                System.Diagnostics.Debug.WriteLine("Database updated?!");
                 return "Message Succesfully sent";
             }
             catch

@@ -25,7 +25,10 @@ namespace MyCommunity.Webbapp.Controllers
             this.groupService = groupService;
         }
 
-        // GET: Group
+        /// <summary>
+        /// Lists all the groups the user hasn´t joined yet
+        /// </summary>
+        /// <returns>joinGroupViewModel</returns>
         public ActionResult Index()
         {
             var user = userService.GetUser(User.Identity.GetUserId());
@@ -43,10 +46,15 @@ namespace MyCommunity.Webbapp.Controllers
 
         }
 
+        /// <summary>
+        /// Joins the specified group
+        /// </summary>
+        /// <param name="joinGroupViewModel"></param>
+        /// <returns></returns>
         public ActionResult JoinGroup(JoinGroupViewModel joinGroupViewModel)
         {
             var user = userService.GetUser(User.Identity.GetUserId());
-            Group group = groupService.GetGroupByIntId(joinGroupViewModel.GroupId);
+            Group group = groupService.GetGroupById(joinGroupViewModel.GroupId);
             try
             {
                 user.Groups.Add(group);

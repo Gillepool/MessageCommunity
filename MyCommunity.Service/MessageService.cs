@@ -46,7 +46,7 @@ namespace MyCommunity.Service
             return messageRepository.GetMany(m => m.ReceiverId == id);
         }
 
-        public void SaveMessage()
+        public void updateDatabase()
         {
             unitOfWork.CommitToDatabase();
         }
@@ -64,7 +64,7 @@ namespace MyCommunity.Service
         Message GetMessage(int id);
         void CreateMessage(Message message);
         void DeleteMessage(Message message);
-        void SaveMessage();
+        void updateDatabase();
         IEnumerable<Message> GetUserMessagesToFrom(string receiver, string sender);
     }
 }

@@ -31,12 +31,15 @@ namespace MyCommunity.Webbapp.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Creates a group with the specified name
+        /// </summary>
+        /// <param name="GroupName"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult CreateGroup(string GroupName)
         {
             ApplicationUser Creator = userService.GetUser(User.Identity.GetUserId());
-            System.Diagnostics.Debug.WriteLine("Creator:_ " + Creator.Email);
-            System.Diagnostics.Debug.WriteLine("GroupName" + GroupName);
             Group group = new Group();
             group.GroupName = GroupName;
             try {
@@ -50,7 +53,6 @@ namespace MyCommunity.Webbapp.Controllers
                 TempData["successMessage"] = "Gruppen skapades inte, kolla igenom dina fält";
             }
             return RedirectToAction("Index");
-
         }
     }
 }

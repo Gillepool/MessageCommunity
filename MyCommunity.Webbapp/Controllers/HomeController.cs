@@ -26,45 +26,23 @@ namespace MyCommunity.Webbapp.Controllers
             this.userLoginService = userLoginService;
         }
 
+        /// <summary>
+        /// Returns user information data 
+        /// </summary>
+        /// <returns> A userinfoviewmodel object containing messages and login information </returns>
         public ActionResult Index()
         {
             UserInformationViewModel UserInfo = new UserInformationViewModel();
-            var user = userService.GetUser(User.Identity.GetUserId());   
+            var user = userService.GetUser(User.Identity.GetUserId());
             UserInfo.Email = user.Email;
             UserInfo.LastLogin = user.LastLogin;
-            UserInfo.NumberOfUnreadMessages = user.NumberOfMessages - (user.NumberOfReadMessages - user.NumberOfdeletedMessages);          
+            UserInfo.NumberOfUnreadMessages = user.NumberOfMessages - (user.NumberOfReadMessages - user.NumberOfdeletedMessages);
             var Logins = userLoginService.GetUserLogins(user.Id);
             UserInfo.NumberOfLoginsLastMonth = Logins.Count(l => l.TimeOfLogin > DateTime.Now.AddDays(-30));
             user.LastLogin = DateTime.Now;
-            System.Diagnostics.Debug.WriteLine("last user login time: " + user.LastLogin);
             userService.UpdateUser(user);
             userService.updateDatabase();
             return View(UserInfo);
         }
-
-        public ActionResult GetMessages()
-        {
-            IEnumerable<MessageViewModel> MessageViewModels;
-            IEnumerable<Message> Messages;
-            var user = userService.GetUser(User.Identity.GetUserId());
-            Messages = messageService.GetUserMessages(user.Id);
-            MessageViewModels = Mapper.Map<IEnumerable<Message>, IEnumerable<MessageViewModel>>(Messages);
-            return View(MessageViewModels);
-        }
-
-        [HttpPost]
-        public ActionResult Create(SendMessageViewModel newMessage)
-        {
-            var sender = userService.GetUser(User.Identity.GetUserId());
-            Message message = Mapper.Map<SendMessageViewModel, Message>(newMessage);
-            message.SenderId = sender.Id;
-            message.IsRead = false;
-            message.Dates = DateTime.Now;
-            messageService.CreateMessage(message);
-            messageService.SaveMessage();
-            sender.NumberOfMessages++;
-
-            return RedirectToAction("Index");
-        }
-     }
+    }
 }

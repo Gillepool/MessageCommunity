@@ -24,6 +24,12 @@ namespace MyCommunity.Webbapp.Controllers
             this.userService = userService;
         }
 
+        /// <summary>
+        /// Sends the message to the specified users
+        /// </summary>
+        /// <param name="newMessage"></param>
+        /// <param name="userData"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult SendMessage(MessageViewModel newMessage, SendMessageViewModel userData)
         {

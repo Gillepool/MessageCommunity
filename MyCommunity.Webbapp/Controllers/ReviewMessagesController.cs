@@ -25,7 +25,11 @@ namespace MyCommunity.Webbapp.Controllers
             this.userService = userService;
         }
 
-        // GET: ReviewMessages
+        /// <summary>
+        /// Contains information of all messages as well as total number of messages to the user, 
+        /// number of read messages by the user and deleted messages by the user
+        /// </summary>
+        /// <returns>ReviewUserMessagesViewModel</returns>
         public ActionResult Index()
         {
             var user = userService.GetUser(User.Identity.GetUserId());
@@ -44,49 +48,66 @@ namespace MyCommunity.Webbapp.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// Fetch all the messages sent to the current user, including read and unread messages
+        /// </summary>
+        /// <returns>IEnumerable<MessageViewModel></returns>
         [HttpGet]
         public ActionResult ViewUserMessages(string id)
         {
-            System.Diagnostics.Debug.WriteLine("id:" + id);
             IEnumerable<MessageViewModel> messageViews;
             IEnumerable<Message> messages = messageService.GetUserMessagesToFrom(User.Identity.GetUserId(), id);
             messageViews = Mapper.Map<IEnumerable<Message>, IEnumerable<MessageViewModel>>(messages);
             return View(messageViews);
         }
 
+        /// <summary>
+        /// Updates the database setting the message as read. Sends no feedback since this is behind the scene logic.
+        /// </summary>
+        /// <param name="Id">Id of the message</param>
         [HttpPost]
         public void messageRead(int? Id)
         {
-            System.Diagnostics.Debug.WriteLine("message read:" + Id);
             var user = userService.GetUser(User.Identity.GetUserId());
             if (Id == null)
             {
                 return;
             }
             Message message = messageService.GetMessage(Id.Value);
-            System.Diagnostics.Debug.WriteLine("past get message");
+            if(message == null)
+            {
+                return;
+            }
             if (message.ReceiverId == user.Id)
             {
-                System.Diagnostics.Debug.WriteLine("past id check");
                 if (!message.IsRead)
                 {
-                    System.Diagnostics.Debug.WriteLine("message wasnt read. set message read");
                     user.NumberOfReadMessages++;
                     message.IsRead = true;
-                    messageService.SaveMessage();
                     userService.updateDatabase();
                 }
             }
+
         }
 
-        //TODO null check
+        /// <summary>
+        /// Redirects the user to ViewUserMessages page of the user owning the id
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult GoToViewUserMessages(string Id)
         {
-            System.Diagnostics.Debug.WriteLine("id:" + Id);
+            if (Id == null)
+                return RedirectToAction("Index");
             return RedirectToAction("ViewUserMessages", new { Id = Id });
         }
 
+        /// <summary>
+        /// Removes the message from the database. Updates the number of deleted messages of the user
+        /// </summary>
+        /// <param name="MessageId"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Delete(int? MessageId)
         {
@@ -95,8 +116,11 @@ namespace MyCommunity.Webbapp.Controllers
             {
                 return RedirectToAction("index");
             }
-            System.Diagnostics.Debug.WriteLine("message id" + MessageId);
             Message message = messageService.GetMessage(MessageId.Value);
+            if(message == null)
+            {
+                TempData["fail"] = "Failed to remove message. It does not exist";
+            }
             if (message.ReceiverId == user.Id)
             {
                 try
@@ -104,7 +128,6 @@ namespace MyCommunity.Webbapp.Controllers
                     messageService.DeleteMessage(message);
                     user.NumberOfdeletedMessages++;
                     user.NumberOfMessages--;
-                    messageService.SaveMessage();
                     userService.updateDatabase();
                 }
                 catch
